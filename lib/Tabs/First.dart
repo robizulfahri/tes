@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+// import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:neotelemetri_or11/Models/First/category.dart';
 import 'package:neotelemetri_or11/Models/First/quiz_options.dart';
 import 'package:auto_size_text/auto_size_text.dart';
