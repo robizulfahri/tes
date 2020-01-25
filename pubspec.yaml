@@ -50,6 +50,10 @@ flutter:
     - assets/images/bad.png
     - assets/images/good.png
     - assets/images/success.png
+    - assets/images/intro_1.png
+    - assets/images/intro_2.png
+    - assets/images/intro_3.png
+
 
   fonts:
     - family: RobotoMono

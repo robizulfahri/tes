@@ -32,8 +32,9 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         //     fontStyle: FontStyle.italic,
         //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_programming.png",
-        colorBegin: Color(0xffFFDAB9),
-        colorEnd: Color(0xff40E0D0),
+        // colorBegin: Color(0xffFFDAB9),
+        // colorEnd: Color(0xff40E0D0),
+        backgroundImage: 'assets/images/intro_1.png',
         directionColorBegin: Alignment.topLeft,
         directionColorEnd: Alignment.bottomRight,
       ),
@@ -53,8 +54,9 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         //     fontStyle: FontStyle.italic,
         //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_mmd.png",
-        colorBegin: Color(0xffFFFACD),
-        colorEnd: Color(0xffFF6347),
+        // colorBegin: Color(0xffFFFACD),
+        // colorEnd: Color(0xffFF6347),
+        backgroundImage: 'assets/images/intro_2.png',
         directionColorBegin: Alignment.topRight,
         directionColorEnd: Alignment.bottomLeft,
       ),
@@ -75,8 +77,9 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         //     fontStyle: FontStyle.italic,
         //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_skj.png",
-        colorBegin: Color(0xffFFA500),
-        colorEnd: Color(0xff7FFFD4),
+        // colorBegin: Color(0xffFFA500),
+        // colorEnd: Color(0xff7FFFD4),
+        backgroundImage: 'assets/images/intro_3.png',
         directionColorBegin: Alignment.topCenter,
         directionColorEnd: Alignment.bottomCenter,
       ),
@@ -115,49 +118,49 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
     );
   }
 
-  List<Widget> renderListCustomTabs() {
-    List<Widget> tabs = new List();
-    for (int i = 0; i < slides.length; i++) {
-      Slide currentSlide = slides[i];
-      tabs.add(Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Container(
-          child: ListView(
-            children: <Widget>[
-              Padding(padding: EdgeInsets.only(bottom: 130.0)),
-              GestureDetector(
-                  child: Image.asset(
-                currentSlide.pathImage,
-                width: 250.0,
-                height: 250.0,
-                fit: BoxFit.contain,
-              )),
-              Container(
-                child: Text(
-                  currentSlide.title,
-                  style: currentSlide.styleTitle,
-                  textAlign: TextAlign.center,
-                ),
-                margin: EdgeInsets.only(top: 70.0),
-              ),
-              // Container(
-              //   child: Text(
-              //     currentSlide.description,
-              //     style: currentSlide.styleDescription,
-              //     textAlign: TextAlign.center,
-              //     maxLines: 5,
-              //     overflow: TextOverflow.ellipsis,
-              //   ),
-              //   margin: EdgeInsets.only(top: 10.0),
-              // ),
-            ],
-          ),
-        ),
-      ));
-    }
-    return tabs;
-  }
+  // List<Widget> renderListCustomTabs() {
+  //   List<Widget> tabs = new List();
+  //   for (int i = 0; i < slides.length; i++) {
+  //     Slide currentSlide = slides[i];
+  //     tabs.add(Container(
+  //       width: double.infinity,
+  //       height: double.infinity,
+  //       child: Container(
+  //         child: ListView(
+  //           children: <Widget>[
+  //             Padding(padding: EdgeInsets.only(bottom: 130.0)),
+  //             GestureDetector(
+  //                 child: Image.asset(
+  //               currentSlide.pathImage,
+  //               width: 250.0,
+  //               height: 250.0,
+  //               fit: BoxFit.contain,
+  //             )),
+  //             Container(
+  //               child: Text(
+  //                 currentSlide.title,
+  //                 style: currentSlide.styleTitle,
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //               margin: EdgeInsets.only(top: 70.0),
+  //             ),
+  //             // Container(
+  //             //   child: Text(
+  //             //     currentSlide.description,
+  //             //     style: currentSlide.styleDescription,
+  //             //     textAlign: TextAlign.center,
+  //             //     maxLines: 5,
+  //             //     overflow: TextOverflow.ellipsis,
+  //             //   ),
+  //             //   margin: EdgeInsets.only(top: 10.0),
+  //             // ),
+  //           ],
+  //         ),
+  //       ),
+  //     ));
+  //   }
+  //   return tabs;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -182,14 +185,14 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
       highlightColorDoneBtn: Colors.transparent,
 
       // Dot indicator
-      colorDot: Color(0xff8051A0),
-      colorActiveDot: Color(0xffB8529E),
+      colorDot: Color(0xffB8529E),
+      colorActiveDot: Color(0xff8051A0),
       sizeDot: 13.0,
       typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
 
       // Tabs
-      listCustomTabs: this.renderListCustomTabs(),
-      backgroundColorAllSlides: Colors.white,
+      // listCustomTabs: this.renderListCustomTabs(),
+      backgroundColorAllSlides: Colors.transparent,
 
       // Show or hide status bar
       shouldHideStatusBar: false,

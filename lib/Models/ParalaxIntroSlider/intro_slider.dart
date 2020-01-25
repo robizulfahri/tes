@@ -1013,13 +1013,13 @@ class IntroSliderState extends State<IntroSlider>
         image: DecorationImage(
           image: AssetImage(backgroundImage),
           fit: backgroundImageFit ?? BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            backgroundOpacityColor != null
-                ? backgroundOpacityColor
-                .withOpacity(backgroundOpacity ?? 0.5)
-                : Colors.black.withOpacity(backgroundOpacity ?? 0.5),
-            backgroundBlendMode ?? BlendMode.darken,
-          ),
+          // colorFilter: ColorFilter.mode(
+          //   backgroundOpacityColor != null
+          //       ? backgroundOpacityColor
+          //       .withOpacity(backgroundOpacity ?? 0.0)
+          //       : Colors.black.withOpacity(backgroundOpacity ?? 0.0),
+          //   backgroundBlendMode ?? BlendMode.darken,
+          // ),
         ),
       )
           : BoxDecoration(
@@ -1032,9 +1032,22 @@ class IntroSliderState extends State<IntroSlider>
         ),
       ),
       child: Container(
-        margin: EdgeInsets.only(bottom: 60.0),
+        margin: EdgeInsets.only(bottom: 60.0, top: 60.0),
         child: ListView(
           children: <Widget>[
+            // Image or Center widget
+            GestureDetector(
+              child: pathImage != null
+                  ? Image.asset(
+                pathImage,
+                width: widthImage ?? 200.0,
+                height: heightImage ?? 200.0,
+                fit: foregroundImageFit ?? BoxFit.contain,
+              )
+                  : Center(child: centerWidget ?? Container()),
+              onTap: onCenterItemPress,
+            ),
+
             Container(
               // Title
               child: Text(
@@ -1051,20 +1064,7 @@ class IntroSliderState extends State<IntroSlider>
               ),
               margin: marginTitle ??
                   EdgeInsets.only(
-                      top: 70.0, bottom: 50.0, left: 20.0, right: 20.0),
-            ),
-
-            // Image or Center widget
-            GestureDetector(
-              child: pathImage != null
-                  ? Image.asset(
-                pathImage,
-                width: widthImage ?? 200.0,
-                height: heightImage ?? 200.0,
-                fit: foregroundImageFit ?? BoxFit.contain,
-              )
-                  : Center(child: centerWidget ?? Container()),
-              onTap: onCenterItemPress,
+                      top: 20.0, bottom: 50.0, left: 20.0, right: 20.0),
             ),
 
             // Description
