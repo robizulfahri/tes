@@ -3,7 +3,7 @@ import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/dot_animation_enum.d
 import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/intro_slider.dart';
 import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/slide_object.dart';
 import 'package:neotelemetri_or11/Constant/Constant.dart';
-import 'package:neotelemetri_or11/Screen/LoginPage.dart';
+// import 'package:neotelemetri_or11/Screen/LoginPage.dart';
 
 class ParalaxIntroSlider extends StatefulWidget {
   @override

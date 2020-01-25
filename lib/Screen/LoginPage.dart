@@ -48,7 +48,6 @@ class _LoginPageState extends State<LoginPage>
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-//      print("$email, $password");
       _login();
     }
   }
@@ -108,8 +107,6 @@ class _LoginPageState extends State<LoginPage>
             gradient: LinearGradient(colors: [
               Theme.Colors.loginGradientStart,
               Theme.Colors.loginGradientEnd
-//                  Color.fromRGBO(116, 116, 191, 1.0),
-//                  Color.fromRGBO(52, 138, 199, 1.0)
             ]),
             radius: BorderRadius.circular(5.5),
           )
@@ -150,7 +147,6 @@ class _LoginPageState extends State<LoginPage>
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return new Scaffold(
-//          resizeToAvoidBottomPadding: false,
           key: _scaffoldKey,
           body: NotificationListener<OverscrollIndicatorNotification>(
             // ignore: missing_return
@@ -183,7 +179,7 @@ class _LoginPageState extends State<LoginPage>
                           width: 250.0,
                           height: 191.0,
                           image:
-                              new AssetImage('assets/images/logo_or_10.png')),
+                              new AssetImage('assets/images/logo_or_11.png')),
                     ),
                     Expanded(
                       flex: 2,
@@ -196,7 +192,7 @@ class _LoginPageState extends State<LoginPage>
                         ],
                       ),
                     ),
-                    Image.asset("assets/images/image_02.png")
+                    Image.asset("assets/images/login_2.png")
                   ],
                 ),
               ),
@@ -239,11 +235,6 @@ class _LoginPageState extends State<LoginPage>
                               top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                           child: TextFormField(
                             // ignore: missing_return
-//                              validator: (e){
-//                                if (e.isEmpty) {
-//                                  return "Please insert username";
-//                                }
-//                              },
                             onSaved: (e) => email = e,
                             focusNode: myFocusNodeEmailLogin,
                             controller: loginEmailController,

@@ -22,9 +22,6 @@ void main(){
     statusBarIconBrightness: Brightness.light,
     statusBarBrightness:
     Platform.isAndroid ? Brightness.dark : Brightness.light,
-//    systemNavigationBarColor: Colors.black,
-//    systemNavigationBarDividerColor: Colors.white,
-//    systemNavigationBarIconBrightness: Brightness.light,
   ));
 }
 
@@ -54,7 +51,6 @@ class _MyAppState extends State<MyApp> {
         SECOND_TAB: (BuildContext context) => new Second(),
         THIRD_TAB: (BuildContext context) => new OnlineExamsPage(),
         FOURTH_TAB: (BuildContext context) => new UserProfilePage(),
-
       },
     );
   }
