@@ -22,15 +22,15 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         title: "PROGRAMMING",
         styleTitle: TextStyle(
             color: Colors.black,
-            fontSize: 20.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans'),
-        description: "",
-        styleDescription: TextStyle(
-            color: Color(0xffD02090),
-            fontSize: 20.0,
-            fontStyle: FontStyle.italic,
-            fontFamily: 'Raleway'),
+        // description: "",
+        // styleDescription: TextStyle(
+        //     color: Color(0xffD02090),
+        //     fontSize: 20.0,
+        //     fontStyle: FontStyle.italic,
+        //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_programming.png",
         colorBegin: Color(0xffFFDAB9),
         colorEnd: Color(0xff40E0D0),
@@ -43,15 +43,15 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         title: "MULTIMEDIA & DESAIN",
         styleTitle: TextStyle(
             color: Colors.black,
-            fontSize: 20.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans'),
-        description: "",
-        styleDescription: TextStyle(
-            color: Color(0xffD02090),
-            fontSize: 20.0,
-            fontStyle: FontStyle.italic,
-            fontFamily: 'Raleway'),
+        // description: "",
+        // styleDescription: TextStyle(
+        //     color: Color(0xffD02090),
+        //     fontSize: 20.0,
+        //     fontStyle: FontStyle.italic,
+        //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_mmd.png",
         colorBegin: Color(0xffFFFACD),
         colorEnd: Color(0xffFF6347),
@@ -65,15 +65,15 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         maxLineTitle: 2,
         styleTitle: TextStyle(
             color: Colors.black,
-            fontSize: 20.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans'),
-        description: "",
-        styleDescription: TextStyle(
-            color: Color(0xffD02090),
-            fontSize: 20.0,
-            fontStyle: FontStyle.italic,
-            fontFamily: 'Raleway'),
+        // description: "",
+        // styleDescription: TextStyle(
+        //     color: Color(0xffD02090),
+        //     fontSize: 20.0,
+        //     fontStyle: FontStyle.italic,
+        //     fontFamily: 'Raleway'),
         pathImage: "assets/images/logo_skj.png",
         colorBegin: Color(0xffFFA500),
         colorEnd: Color(0xff7FFFD4),
@@ -95,7 +95,7 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
   Widget renderNextBtn() {
     return Icon(
       Icons.navigate_next,
-      color: Colors.lightBlue[300],
+      color: Colors.white,
       size: 35.0,
     );
   }
@@ -103,7 +103,7 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
   Widget renderDoneBtn() {
     return Icon(
       Icons.done,
-      color: Color(0xffD02090),
+      color: Color(0xffB8529E),
       size: 35.0,
     );
   }
@@ -111,7 +111,7 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
   Widget renderPrevBtn() {
     return Icon(
       Icons.navigate_before,
-      color: Color(0xffD02090),
+      color: Color(0xffB8529E),
     );
   }
 
@@ -139,18 +139,18 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
                   style: currentSlide.styleTitle,
                   textAlign: TextAlign.center,
                 ),
-                margin: EdgeInsets.only(top: 40.0),
+                margin: EdgeInsets.only(top: 70.0),
               ),
-              Container(
-                child: Text(
-                  currentSlide.description,
-                  style: currentSlide.styleDescription,
-                  textAlign: TextAlign.center,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                margin: EdgeInsets.only(top: 10.0),
-              ),
+              // Container(
+              //   child: Text(
+              //     currentSlide.description,
+              //     style: currentSlide.styleDescription,
+              //     textAlign: TextAlign.center,
+              //     maxLines: 5,
+              //     overflow: TextOverflow.ellipsis,
+              //   ),
+              //   margin: EdgeInsets.only(top: 10.0),
+              // ),
             ],
           ),
         ),
@@ -165,14 +165,14 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
       // List slides
       slides: this.slides,
 
-      // Skip button
+      // Prev button
       renderPrevBtn: this.renderPrevBtn(),
-      colorPrevBtn: Colors.grey[300],
+      colorPrevBtn: Color(0xffF5F6F8),
       highlightColorPrevBtn: Colors.transparent,
 
       // Next button
       renderNextBtn: this.renderNextBtn(),
-      colorNextBtn: Color(0xffD02090),
+      colorNextBtn: Color(0xffB8529E),
       highlightColorNextBtn: Colors.transparent,
 
       // Done button
@@ -182,8 +182,8 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
       highlightColorDoneBtn: Colors.transparent,
 
       // Dot indicator
-      colorDot: Color(0xffffe57f),
-      colorActiveDot: Color(0xffffc400),
+      colorDot: Color(0xff8051A0),
+      colorActiveDot: Color(0xffB8529E),
       sizeDot: 13.0,
       typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
 

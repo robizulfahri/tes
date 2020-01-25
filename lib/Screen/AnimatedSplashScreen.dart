@@ -19,7 +19,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
   var _visible = true;
 
   AnimationController animationController;
-  Animation<double> animation;
+  Animation<double> animation,animation2;
 
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -58,7 +58,8 @@ class SplashScreenState extends State<AnimatedSplashScreen>
   void initState() {
     super.initState();
     animationController = new AnimationController(
-        vsync: this, duration: new Duration(seconds: 1));
+        vsync: this, 
+        duration: new Duration(seconds: 1));
     animation =
     new CurvedAnimation(parent: animationController, curve: Curves.linearToEaseOut);
 
@@ -71,9 +72,20 @@ class SplashScreenState extends State<AnimatedSplashScreen>
     startTime();
   }
 
+Animatable<Color> background = TweenSequence<Color>([
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Color(0xffBF63A8),
+        end: Color(0xff8051A0),
+      ),
+    ),
+  ]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: background.evaluate(AlwaysStoppedAnimation(animationController.value)),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -94,7 +106,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Image.asset(
-                'assets/images/logo_or_10.png',
+                'assets/images/logo_or_11.png',
                 width: animation.value * 250,
                 height: animation.value * 250,
               ),
