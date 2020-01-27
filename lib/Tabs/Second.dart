@@ -16,7 +16,7 @@ class _SecondState extends State<Second> {
   var loading = false;
   final list = new List<ProdukModel>();
   final GlobalKey<RefreshIndicatorState> _refresh =
-  GlobalKey<RefreshIndicatorState>();
+      GlobalKey<RefreshIndicatorState>();
   Future<void> _lihatData() async {
     list.clear();
     setState(() {
@@ -28,7 +28,7 @@ class _SecondState extends State<Second> {
       final data = jsonDecode(response.body);
       data.forEach((api) {
         final ab = new ProdukModel(
-          api['id'],
+          // api['id'],
           api['pertanyaan'],
           api['jawaban'],
           api['kategori'],
@@ -110,7 +110,6 @@ class _SecondState extends State<Second> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
 //      floatingActionButton: FloatingActionButton(
@@ -125,30 +124,30 @@ class _SecondState extends State<Second> {
         child: loading
             ? Center(child: CircularProgressIndicator())
             : ListView.builder(
-          itemCount: list.length,
-          itemBuilder: (context, i) {
-            final x = list[i];
-            return Container(
-              padding: EdgeInsets.all(10.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                itemCount: list.length,
+                itemBuilder: (context, i) {
+                  final x = list[i];
+                  return Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Row(
                       children: <Widget>[
-                        Text(
-                          x.pertanyaan,
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                x.pertanyaan,
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(x.jawaban),
+                              Text(x.kategori),
+                              Text(x.idKategori),
+                              Text(x.id),
+                            ],
+                          ),
                         ),
-                        Text(x.jawaban),
-                        Text(x.kategori),
-                        Text(x.idKategori),
-                        Text(x.id),
-                      ],
-                    ),
-                  ),
 //                  IconButton(
 //                    onPressed: () {
 //                      Navigator.of(context).push(MaterialPageRoute(
@@ -163,11 +162,11 @@ class _SecondState extends State<Second> {
 //                    },
 //                    icon: Icon(Icons.delete),
 //                  )
-                ],
+                      ],
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
       ),
     );
   }
