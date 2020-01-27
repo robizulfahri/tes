@@ -1,99 +1,131 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:neotelemetri_or11/Tabs/First.dart';
-import 'package:neotelemetri_or11/Tabs/Second.dart';
-import 'package:neotelemetri_or11/Tabs/OnlineExamsPage.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/bottom_navigation_view/bottom_bar_view.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/course_info_screen.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/fintness_app_theme.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/models/tabIcon_data.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/my_diary/my_diary_screen.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/traning/training_screen.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/navigation_bar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   @override
-  DashboardState createState() => new DashboardState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class DashboardState extends State<Dashboard>
-    with SingleTickerProviderStateMixin {
-  int currentIndex = 0;
-  String email = "", name = "";
+class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
+  AnimationController animationController;
 
-  getPref() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      email = preferences.getString("email");
-      name = preferences.getString("name");
-    });
-  }
+  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
+
+  Widget tabBody = Container(
+    color: FintnessAppTheme.background,
+  );
 
   @override
   void initState() {
-    // TODO: implement initState
+    tabIconsList.forEach((TabIconData tab) {
+      tab.isSelected = false;
+    });
+    tabIconsList[0].isSelected = true;
+
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 300), vsync: this);
+    tabBody = MyDiaryScreen(animationController: animationController);
     super.initState();
-    getPref();
   }
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  static List<Widget> getTabBarView = <Widget>[
-    First(),
-    Second(),
-    OnlineExamsPage(),
-    UserProfilePage(),
-  ];
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 1080, height: 2340, allowFontScaling: true);
-    return DefaultTabController(
-      length: 4,
+    return Container(
+      color: FintnessAppTheme.background,
       child: Scaffold(
-        body: Center(
-          child: getTabBarView.elementAt(currentIndex),
-        ),
-        bottomNavigationBar: BottomNavyBar(
-          backgroundColor: Colors.white,
-          selectedIndex: currentIndex,
-          showElevation: true,
-          onItemSelected: (index) => setState(() {
-            currentIndex = index;
-          }),
-          items: [
-            BottomNavyBarItem(
-              icon: Icon(Icons.dashboard),
-              title: Text('Home',
-                  style: TextStyle(
-                    fontSize: ScreenUtil().setSp(40),
-                  )),
-              activeColor: Colors.red,
-            ),
-            BottomNavyBarItem(
-                icon: Icon(Icons.assignment),
-                title: Text('Assignment',
-                    style: TextStyle(
-                      fontSize:
-                          ScreenUtil().setSp(40, allowFontScalingSelf: true),
-                    )),
-                activeColor: Colors.purpleAccent),
-            BottomNavyBarItem(
-                icon: Icon(Icons.description),
-                title: Text('Exams',
-                    style: TextStyle(
-                      fontSize:
-                          ScreenUtil().setSp(40, allowFontScalingSelf: true),
-                    )),
-                activeColor: Colors.pink),
-            BottomNavyBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile',
-                    style: TextStyle(
-                      fontSize:
-                          ScreenUtil().setSp(40, allowFontScalingSelf: true),
-                    )),
-                activeColor: Colors.blue),
-          ],
+        backgroundColor: Colors.transparent,
+        body: FutureBuilder<bool>(
+          future: getData(),
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (!snapshot.hasData) {
+              return const SizedBox();
+            } else {
+              return Stack(
+                children: <Widget>[
+                  tabBody,
+                  bottomBar(),
+                ],
+              );
+            }
+          },
         ),
       ),
+    );
+  }
+
+  Future<bool> getData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    return true;
+  }
+
+  Widget bottomBar() {
+    return Column(
+      children: <Widget>[
+        const Expanded(
+          child: SizedBox(),
+        ),
+        BottomBarView(
+          tabIconsList: tabIconsList,
+          addClick: () {},
+          changeIndex: (int index) {
+            if (index == 0) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      MyDiaryScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 1) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      TrainingScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = CourseInfoScreen(
+                      animationController: animationController);
+                });
+              });
+            } else if (index == 3) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      UserProfilePage(animationController: animationController);
+                });
+              });
+            }
+          },
+        ),
+      ],
     );
   }
 }

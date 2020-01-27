@@ -7,6 +7,9 @@ import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserProfilePage extends StatefulWidget {
+  const UserProfilePage({Key key, this.animationController}) : super(key: key);
+
+  final AnimationController animationController;
   @override
   _UserProfilePageState createState() => _UserProfilePageState();
 }

@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage>
   );
 
   _login() async {
-    var urlLogin = 'http://10.126.110.164//ioms11/login.php';
+    var urlLogin = 'http://192.168.100.129//ioms11/login.php';
     final response =
         await http.post(urlLogin, body: {"email": email, "password": password});
     final data = jsonDecode(response.body);

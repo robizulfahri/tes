@@ -6,9 +6,9 @@ import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:neotelemetri_or11/Screen/AnimatedSplashScreen.dart';
 import 'package:neotelemetri_or11/Screen/ParalaxIntroSlider.dart';
 import 'package:neotelemetri_or11/Screen/LoginPage.dart';
-import 'package:neotelemetri_or11/Tabs/First.dart';
-import 'package:neotelemetri_or11/Tabs/OnlineExamsPage.dart';
-import 'package:neotelemetri_or11/Tabs/Second.dart';
+// import 'package:neotelemetri_or11/Tabs/First.dart';
+// import 'package:neotelemetri_or11/Tabs/OnlineExamsPage.dart';
+// import 'package:neotelemetri_or11/Tabs/Second.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 import 'appTheme.dart';
 
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.android,
+        // platform: TargetPlatform.android,
       ),
       home: AnimatedSplashScreen(),
       routes: <String, WidgetBuilder>{
@@ -49,11 +49,23 @@ class _MyAppState extends State<MyApp> {
         PARALAX_INTRO: (BuildContext context) => new ParalaxIntroSlider(),
         LOGIN_SCREEN: (BuildContext context) => new LoginPage(),
         DASHBOARD: (BuildContext context) => new Dashboard(),
-        FIRST_TAB: (BuildContext context) => new First(),
-        SECOND_TAB: (BuildContext context) => new Second(),
-        THIRD_TAB: (BuildContext context) => new OnlineExamsPage(),
+        // FIRST_TAB: (BuildContext context) => new First(),
+        // SECOND_TAB: (BuildContext context) => new Second(),
+        // THIRD_TAB: (BuildContext context) => new OnlineExamsPage(),
         FOURTH_TAB: (BuildContext context) => new UserProfilePage(),
       },
     );
+  }
+}
+
+class HexColor extends Color {
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF' + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
   }
 }
