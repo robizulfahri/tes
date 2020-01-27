@@ -61,7 +61,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 decoration: new BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xffF5F6F8),
                     boxShadow: [
                       new BoxShadow(
                         color: Colors.white,

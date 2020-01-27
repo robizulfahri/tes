@@ -578,7 +578,7 @@ class IntroSliderState extends State<IntroSlider>
             }
 
             double diffValueAnimation =
-            (tabController.animation.value - currentAnimationValue).abs();
+                (tabController.animation.value - currentAnimationValue).abs();
             int diffValueIndex = (currentTabIndex - tabController.index).abs();
 
             // When press skip button
@@ -761,7 +761,7 @@ class IntroSliderState extends State<IntroSlider>
   // Checking if tab is animating
   bool isAnimating(value) {
     return tabController.animation.value -
-        tabController.animation.value.truncate() !=
+            tabController.animation.value.truncate() !=
         0;
   }
 
@@ -830,8 +830,7 @@ class IntroSliderState extends State<IntroSlider>
   Widget buildSkipButton() {
     if (tabController.index + 1 == slides.length) {
       return Container(width: MediaQuery.of(context).size.width / 4);
-    }
-     else {
+    } else {
       return RaisedButton(
         onPressed: onSkipPress,
         child: renderSkipBtn,
@@ -873,46 +872,46 @@ class IntroSliderState extends State<IntroSlider>
             width: isShowPrevBtn
                 ? widthPrevBtn ?? MediaQuery.of(context).size.width / 4
                 : (isShowSkipBtn
-                ? widthSkipBtn
-                : MediaQuery.of(context).size.width / 4),
+                    ? widthSkipBtn
+                    : MediaQuery.of(context).size.width / 4),
           ),
 
           // Dot indicator
           Flexible(
             child: isShowDotIndicator
                 ? Container(
-              child: Stack(
-                children: <Widget>[
-                  Row(
-                    children: this.renderListDots(),
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                  typeDotAnimation == dotSliderAnimation.DOT_MOVEMENT
-                      ? Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: colorActiveDot,
-                          borderRadius:
-                          BorderRadius.circular(sizeDot / 2)),
-                      width: sizeDot,
-                      height: sizeDot,
-                      margin: EdgeInsets.only(
-                          left: this.isRTLLanguage(
-                              Localizations.localeOf(context)
-                                  .languageCode)
-                              ? marginRightDotFocused
-                              : marginLeftDotFocused,
-                          right: this.isRTLLanguage(
-                              Localizations.localeOf(context)
-                                  .languageCode)
-                              ? marginLeftDotFocused
-                              : marginRightDotFocused),
+                    child: Stack(
+                      children: <Widget>[
+                        Row(
+                          children: this.renderListDots(),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        ),
+                        typeDotAnimation == dotSliderAnimation.DOT_MOVEMENT
+                            ? Center(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: colorActiveDot,
+                                      borderRadius:
+                                          BorderRadius.circular(sizeDot / 2)),
+                                  width: sizeDot,
+                                  height: sizeDot,
+                                  margin: EdgeInsets.only(
+                                      left: this.isRTLLanguage(
+                                              Localizations.localeOf(context)
+                                                  .languageCode)
+                                          ? marginRightDotFocused
+                                          : marginLeftDotFocused,
+                                      right: this.isRTLLanguage(
+                                              Localizations.localeOf(context)
+                                                  .languageCode)
+                                          ? marginLeftDotFocused
+                                          : marginRightDotFocused),
+                                ),
+                              )
+                            : Container()
+                      ],
                     ),
                   )
-                      : Container()
-                ],
-              ),
-            )
                 : Container(),
           ),
 
@@ -921,8 +920,8 @@ class IntroSliderState extends State<IntroSlider>
             alignment: Alignment.center,
             child: isShowDoneBtn
                 ? (tabController.index + 1 == slides.length
-                ? buildDoneButton()
-                : buildNextButton())
+                    ? buildDoneButton()
+                    : buildNextButton())
                 : Container(),
             width: widthDoneBtn ?? MediaQuery.of(context).size.width / 4,
           ),
@@ -969,81 +968,74 @@ class IntroSliderState extends State<IntroSlider>
   }
 
   Widget renderTab(
-      // Title
-      String title,
-      int maxLineTitle,
-      TextStyle styleTitle,
-      EdgeInsets marginTitle,
+    // Title
+    String title,
+    int maxLineTitle,
+    TextStyle styleTitle,
+    EdgeInsets marginTitle,
 
-      // Description
-      String description,
-      int maxLineTextDescription,
-      TextStyle styleDescription,
-      EdgeInsets marginDescription,
+    // Description
+    String description,
+    int maxLineTextDescription,
+    TextStyle styleDescription,
+    EdgeInsets marginDescription,
 
-      // Image
-      String pathImage,
-      double widthImage,
-      double heightImage,
-      BoxFit foregroundImageFit,
+    // Image
+    String pathImage,
+    double widthImage,
+    double heightImage,
+    BoxFit foregroundImageFit,
 
-      // Center Widget
-      Widget centerWidget,
-      Function onCenterItemPress,
+    // Center Widget
+    Widget centerWidget,
+    Function onCenterItemPress,
 
-      // Background color
-      Color backgroundColor,
-      Color colorBegin,
-      Color colorEnd,
-      AlignmentGeometry directionColorBegin,
-      AlignmentGeometry directionColorEnd,
+    // Background color
+    Color backgroundColor,
+    Color colorBegin,
+    Color colorEnd,
+    AlignmentGeometry directionColorBegin,
+    AlignmentGeometry directionColorEnd,
 
-      // Background image
-      String backgroundImage,
-      BoxFit backgroundImageFit,
-      double backgroundOpacity,
-      Color backgroundOpacityColor,
-      BlendMode backgroundBlendMode,
-      ) {
+    // Background image
+    String backgroundImage,
+    BoxFit backgroundImageFit,
+    double backgroundOpacity,
+    Color backgroundOpacityColor,
+    BlendMode backgroundBlendMode,
+  ) {
     return Container(
       width: double.infinity,
       height: double.infinity,
       decoration: backgroundImage != null
           ? BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(backgroundImage),
-          fit: backgroundImageFit ?? BoxFit.cover,
-          // colorFilter: ColorFilter.mode(
-          //   backgroundOpacityColor != null
-          //       ? backgroundOpacityColor
-          //       .withOpacity(backgroundOpacity ?? 0.0)
-          //       : Colors.black.withOpacity(backgroundOpacity ?? 0.0),
-          //   backgroundBlendMode ?? BlendMode.darken,
-          // ),
-        ),
-      )
+              image: DecorationImage(
+                image: AssetImage(backgroundImage),
+                fit: backgroundImageFit ?? BoxFit.cover,
+              ),
+            )
           : BoxDecoration(
-        gradient: LinearGradient(
-          colors: backgroundColor != null
-              ? [backgroundColor, backgroundColor]
-              : [colorBegin, colorEnd],
-          begin: directionColorBegin ?? Alignment.topLeft,
-          end: directionColorEnd ?? Alignment.bottomRight,
-        ),
-      ),
+              gradient: LinearGradient(
+                colors: backgroundColor != null
+                    ? [backgroundColor, backgroundColor]
+                    : [colorBegin, colorEnd],
+                begin: directionColorBegin ?? Alignment.topLeft,
+                end: directionColorEnd ?? Alignment.bottomRight,
+              ),
+            ),
       child: Container(
-        margin: EdgeInsets.only(bottom: 60.0, top: 60.0),
+        margin: EdgeInsets.only(bottom: 60.0, top: 160.0),
         child: ListView(
           children: <Widget>[
             // Image or Center widget
             GestureDetector(
               child: pathImage != null
                   ? Image.asset(
-                pathImage,
-                width: widthImage ?? 200.0,
-                height: heightImage ?? 200.0,
-                fit: foregroundImageFit ?? BoxFit.contain,
-              )
+                      pathImage,
+                      width: widthImage ?? 250.0,
+                      height: heightImage ?? 250.0,
+                      fit: foregroundImageFit ?? BoxFit.contain,
+                    )
                   : Center(child: centerWidget ?? Container()),
               onTap: onCenterItemPress,
             ),
@@ -1056,7 +1048,7 @@ class IntroSliderState extends State<IntroSlider>
                     TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
+                      fontSize: 35.0,
                     ),
                 maxLines: maxLineTitle != null ? maxLineTitle : 1,
                 textAlign: TextAlign.center,
@@ -1064,7 +1056,7 @@ class IntroSliderState extends State<IntroSlider>
               ),
               margin: marginTitle ??
                   EdgeInsets.only(
-                      top: 20.0, bottom: 50.0, left: 20.0, right: 20.0),
+                      top: 60.0, bottom: 50.0, left: 20.0, right: 20.0),
             ),
 
             // Description
@@ -1100,8 +1092,7 @@ class IntroSliderState extends State<IntroSlider>
     return Opacity(
       child: Container(
         decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(radius / 2)),
+            color: color, borderRadius: BorderRadius.circular(radius / 2)),
         width: radius,
         height: radius,
         margin: EdgeInsets.only(left: radius / 2, right: radius / 2),

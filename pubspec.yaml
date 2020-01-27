@@ -37,7 +37,10 @@ flutter:
     - assets/images/logo_programming.png
     - assets/images/logo_skj.png
     - assets/images/logo_or_11.png
+    - assets/images/logo_or_11_1.png
+    - assets/images/logo_or_11_2.png
     - assets/images/avatar.jpg
+    - assets/images/login_1.png
     - assets/images/login_2.png
     - assets/images/wrong.png
     - assets/images/intro_1.png
@@ -46,14 +49,17 @@ flutter:
 
 
   fonts:
-    - family: RobotoMono
+    - family: RobotoMonoBold
       fonts:
-        - asset: assets/fonts/RobotoMono-Regular.ttf
         - asset: assets/fonts/RobotoMono-Bold.ttf
 
-    - family: OpenSans
+    - family: OpenSansBold
       fonts:
         - asset: assets/fonts/OpenSans-Bold.ttf
+
+    - family: OpenSansSemiBold
+      fonts:
+        - asset: assets/fonts/OpenSans-Semibold.ttf
 
     - family: Raleway
       fonts:

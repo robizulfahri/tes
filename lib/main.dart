@@ -12,16 +12,19 @@ import 'package:neotelemetri_or11/Tabs/Second.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 import 'appTheme.dart';
 
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
-  .then((_) => runApp(new MyApp()));
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) => runApp(new MyApp()));
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
     statusBarBrightness:
-    Platform.isAndroid ? Brightness.dark : Brightness.light,
+        Platform.isAndroid ? Brightness.dark : Brightness.light,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarDividerColor: Colors.grey,
+    systemNavigationBarIconBrightness: Brightness.dark,
   ));
 }
 
@@ -31,7 +34,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

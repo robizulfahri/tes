@@ -7,6 +7,7 @@ import 'package:neotelemetri_or11/Models/LoginPage/theme.dart' as Theme;
 import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -15,7 +16,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => new _LoginPageState();
 }
 
-enum LoginStatus { notSignIn, SignIn }
+enum LoginStatus { notSignIn, signIn }
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
@@ -56,31 +57,33 @@ class _LoginPageState extends State<LoginPage>
     animationType: AnimationType.fromTop,
     isCloseButton: false,
     isOverlayTapDismiss: false,
-    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    descStyle: TextStyle(fontFamily: "OpenSansBold"),
     animationDuration: Duration(milliseconds: 400),
     alertBorder: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
       side: BorderSide(
-        color: Colors.grey,
+        color: Colors.transparent,
       ),
     ),
     titleStyle: TextStyle(
+      fontFamily: "OpenSansBold",
       color: Colors.red,
     ),
   );
 
   _login() async {
-    var urlLogin = 'http://10.126.193.39/ioms11/login.php';
-    final response = await http.post(urlLogin,
-        body: {"email": email, "password": password});
+    var urlLogin = 'http://10.126.110.164//ioms11/login.php';
+    final response =
+        await http.post(urlLogin, body: {"email": email, "password": password});
     final data = jsonDecode(response.body);
+    // String role = data['role'];
     int value = data['value'];
     String message = data['message'];
     String emailAPI = data['email'];
     String nameAPI = data['name'];
     if (value == 1) {
       setState(() {
-        _loginStatus = LoginStatus.SignIn;
+        _loginStatus = LoginStatus.signIn;
         savePref(value, emailAPI, nameAPI);
       });
       print(message);
@@ -91,9 +94,9 @@ class _LoginPageState extends State<LoginPage>
       Alert(
         style: alertStyle,
         context: context,
-        title: "Failed",
-        desc: "unfortunately the data is wrong",
-        image: Image.asset("assets/images/wrong.png"),
+        title: ("Ooops"),
+        desc: "Sorry, your login failed.\nUnfortunately the data is wrong",
+        image: Image.asset("assets/images/wrong.png", width: 50, height: 50),
         buttons: [
           DialogButton(
             child: Text(
@@ -101,7 +104,7 @@ class _LoginPageState extends State<LoginPage>
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,
-                  fontFamily: "WorkSansBold"),
+                  fontFamily: "OpenSansBold"),
             ),
             onPressed: () => Navigator.pop(context),
             gradient: LinearGradient(colors: [
@@ -119,6 +122,7 @@ class _LoginPageState extends State<LoginPage>
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", value);
+      // preferences.setString("role", role);
       preferences.setString("email", email);
       preferences.setString("name", name);
       preferences.commit();
@@ -126,12 +130,13 @@ class _LoginPageState extends State<LoginPage>
   }
 
   var value;
+  // var role;
 
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       value = preferences.getInt("value");
-      _loginStatus = value == 1 ? LoginStatus.SignIn : LoginStatus.notSignIn;
+      _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
     });
   }
 
@@ -144,6 +149,11 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.grey,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return new Scaffold(
@@ -159,27 +169,21 @@ class _LoginPageState extends State<LoginPage>
                 height: MediaQuery.of(context).size.height >= 775.0
                     ? MediaQuery.of(context).size.height
                     : 775.0,
-                decoration: new BoxDecoration(
-                  gradient: new LinearGradient(
-                      colors: [
-                        Theme.Colors.loginGradientStart,
-                        Theme.Colors.loginGradientEnd
-                      ],
-                      begin: const FractionalOffset(0.0, 0.0),
-                      end: const FractionalOffset(1.0, 1.0),
-                      stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
+                decoration: BoxDecoration(
+                  image: new DecorationImage(
+                      image: new ExactAssetImage('assets/images/login_1.png'),
+                      fit: BoxFit.cover),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(top: 75.0),
+                      padding: EdgeInsets.only(top: 150.0),
                       child: new Image(
                           width: 250.0,
-                          height: 191.0,
+                          height: 101.0,
                           image:
-                              new AssetImage('assets/images/logo_or_11.png')),
+                              new AssetImage('assets/images/logo_or_11_2.png')),
                     ),
                     Expanded(
                       flex: 2,
@@ -192,7 +196,6 @@ class _LoginPageState extends State<LoginPage>
                         ],
                       ),
                     ),
-                    Image.asset("assets/images/login_2.png")
                   ],
                 ),
               ),
@@ -202,7 +205,7 @@ class _LoginPageState extends State<LoginPage>
 
         break;
 
-      case LoginStatus.SignIn:
+      case LoginStatus.signIn:
         return Dashboard();
         break;
     }
@@ -219,7 +222,7 @@ class _LoginPageState extends State<LoginPage>
             children: <Widget>[
               Card(
                 elevation: 2.0,
-                color: Colors.white,
+                color: Color(0xffF1A2DE),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -232,7 +235,7 @@ class _LoginPageState extends State<LoginPage>
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 50.0),
                           child: TextFormField(
                             // ignore: missing_return
                             onSaved: (e) => email = e,
@@ -240,59 +243,61 @@ class _LoginPageState extends State<LoginPage>
                             controller: loginEmailController,
                             keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
-                                fontFamily: "WorkSansSemiBold",
-                                fontSize: 16.0,
-                                color: Colors.black),
+                                fontFamily: "OpenSansSemiBold",
+                                fontSize: 19.0,
+                                color: Colors.white),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
                                 FontAwesomeIcons.envelope,
-                                color: Colors.black,
-                                size: 22.0,
+                                color: Colors.white,
+                                size: 25.0,
                               ),
                               hintText: "Email Address",
                               hintStyle: TextStyle(
-                                  fontFamily: "WorkSansSemiBold",
-                                  fontSize: 17.0),
+                                  fontFamily: "OpenSansSemiBold",
+                                  color: Colors.white70,
+                                  fontSize: 20.0),
                             ),
                           ),
                         ),
                         Container(
                           width: 250.0,
                           height: 1.0,
-                          color: Colors.grey[400],
+                          color: Colors.black,
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                              top: 10.0, bottom: 20.0, left: 25.0, right: 5.0),
                           child: TextFormField(
                             onSaved: (e) => password = e,
                             focusNode: myFocusNodePasswordLogin,
                             controller: loginPasswordController,
                             obscureText: _obscureTextLogin,
                             style: TextStyle(
-                                fontFamily: "WorkSansSemiBold",
-                                fontSize: 16.0,
-                                color: Colors.black),
+                                fontFamily: "OpenSansSemiBold",
+                                fontSize: 19.0,
+                                color: Colors.white),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
                                 FontAwesomeIcons.lock,
-                                size: 22.0,
-                                color: Colors.black,
+                                size: 25.0,
+                                color: Colors.white,
                               ),
                               hintText: "Password",
                               hintStyle: TextStyle(
-                                  fontFamily: "WorkSansSemiBold",
-                                  fontSize: 17.0),
+                                  fontFamily: "OpenSansSemiBold",
+                                  fontSize: 20.0,
+                                  color: Colors.white70),
                               suffixIcon: GestureDetector(
                                 onTap: _toggleLogin,
                                 child: Icon(
                                   _obscureTextLogin
                                       ? FontAwesomeIcons.eye
                                       : FontAwesomeIcons.eyeSlash,
-                                  size: 15.0,
-                                  color: Colors.black,
+                                  size: 18.0,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -341,8 +346,8 @@ class _LoginPageState extends State<LoginPage>
                       "LOGIN",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25.0,
-                          fontFamily: "WorkSansBold"),
+                          fontSize: 28.0,
+                          fontFamily: "OpenSansBold"),
                     ),
                   ),
                   onPressed: () {

@@ -4,7 +4,8 @@ import 'package:neotelemetri_or11/Models/OnlineExamsPage/quiz_screen.dart';
 import 'package:neotelemetri_or11/Models/OnlineExamsPage/bouncing_widget.dart';
 import 'package:neotelemetri_or11/Models/OnlineExamsPage/number_timer.dart';
 import 'package:neotelemetri_or11/Models/OnlineExamsPage/default_gradient.dart';
-import 'package:neotelemetri_or11/Models/OnlineExamsPage/networking.dart' as network;
+import 'package:neotelemetri_or11/Models/OnlineExamsPage/networking.dart'
+    as network;
 import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 
@@ -14,7 +15,6 @@ class OnlineExamsPage extends StatefulWidget {
 }
 
 class _OnlineExamsPageState extends State<OnlineExamsPage> {
-
   bool loading = true;
   int current = 0;
 
@@ -78,8 +78,7 @@ class _OnlineExamsPageState extends State<OnlineExamsPage> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'RobotoMono',
+                                    fontFamily: 'RobotoMonoBold',
                                   ),
                                 ),
                                 color: Colors.blue,
