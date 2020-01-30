@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:neotelemetri_or11/Models/ComingSoon/logo_divisi_data.dart';
 
-import '../fintness_app_theme.dart';
-
-class AreaListView extends StatefulWidget {
-  const AreaListView(
+class LogoDivisi extends StatefulWidget {
+  const LogoDivisi(
       {Key key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
   final AnimationController mainScreenAnimationController;
   final Animation<dynamic> mainScreenAnimation;
+
   @override
-  _AreaListViewState createState() => _AreaListViewState();
+  _LogoDivisiState createState() => _LogoDivisiState();
 }
 
-class _AreaListViewState extends State<AreaListView>
-    with TickerProviderStateMixin {
+class _LogoDivisiState extends State<LogoDivisi> with TickerProviderStateMixin {
   AnimationController animationController;
-  List<String> areaListData = <String>[
-    'assets/fitness_app/area1.png',
-    'assets/fitness_app/area2.png',
-    'assets/fitness_app/area3.png',
-    'assets/fitness_app/area1.png',
-  ];
+  List<LogoDivisiData> logodivisiData = LogoDivisiData.tabIconsList;
 
   @override
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 2000), vsync: this);
     super.initState();
+  }
+
+  Future<bool> getData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
+    return true;
   }
 
   @override
@@ -52,13 +51,13 @@ class _AreaListViewState extends State<AreaListView>
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: GridView(
                   padding: const EdgeInsets.only(
-                      left: 16, right: 16, top: 16, bottom: 16),
+                      left: 16, right: 16, top: 56, bottom: 16),
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   children: List<Widget>.generate(
-                    areaListData.length,
+                    logodivisiData.length,
                     (int index) {
-                      final int count = areaListData.length;
+                      final int count = logodivisiData.length;
                       final Animation<double> animation =
                           Tween<double>(begin: 0.0, end: 1.0).animate(
                         CurvedAnimation(
@@ -68,15 +67,15 @@ class _AreaListViewState extends State<AreaListView>
                         ),
                       );
                       animationController.forward();
-                      return AreaView(
-                        imagepath: areaListData[index],
+                      return DataView(
+                        logodivisiData: logodivisiData[index],
                         animation: animation,
                         animationController: animationController,
                       );
                     },
                   ),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 3,
                     mainAxisSpacing: 24.0,
                     crossAxisSpacing: 24.0,
                     childAspectRatio: 1.0,
@@ -91,15 +90,12 @@ class _AreaListViewState extends State<AreaListView>
   }
 }
 
-class AreaView extends StatelessWidget {
-  const AreaView({
-    Key key,
-    this.imagepath,
-    this.animationController,
-    this.animation,
-  }) : super(key: key);
+class DataView extends StatelessWidget {
+  const DataView(
+      {Key key, this.logodivisiData, this.animationController, this.animation})
+      : super(key: key);
 
-  final String imagepath;
+  final LogoDivisiData logodivisiData;
   final AnimationController animationController;
   final Animation<dynamic> animation;
 
@@ -112,42 +108,32 @@ class AreaView extends StatelessWidget {
           opacity: animation,
           child: Transform(
             transform: Matrix4.translationValues(
-                0.0, 50 * (1.0 - animation.value), 0.0),
+                100 * (1.0 - animation.value), 0.0, 0.0),
             child: Container(
-              decoration: BoxDecoration(
-                color: FintnessAppTheme.white,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8.0),
-                    bottomLeft: Radius.circular(8.0),
-                    bottomRight: Radius.circular(8.0),
-                    topRight: Radius.circular(8.0)),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: FintnessAppTheme.grey.withOpacity(0.4),
-                      offset: const Offset(1.1, 1.1),
-                      blurRadius: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    logodivisiData.imagePath,
+                    height: 40,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    logodivisiData.titleTxt,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "OpenSansBold",
+                      fontSize: 10,
+                      letterSpacing: 0.2,
+                      color: Colors.black,
+                    ),
+                  ),
                 ],
               ),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  focusColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                  splashColor: FintnessAppTheme.nearlyDarkBlue.withOpacity(0.2),
-                  onTap: () {},
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 16, left: 16, right: 16),
-                        child: Image.asset(imagepath),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
             ),
           ),
         );

@@ -7,7 +7,6 @@ import 'package:neotelemetri_or11/Models/LoginPage/theme.dart' as Theme;
 import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -72,7 +71,7 @@ class _LoginPageState extends State<LoginPage>
   );
 
   _login() async {
-    var urlLogin = 'http://192.168.100.129//ioms11/login.php';
+    var urlLogin = 'https://or.neotelemetri.com/coba/view/mobile_login.php';
     final response =
         await http.post(urlLogin, body: {"email": email, "password": password});
     final data = jsonDecode(response.body);
@@ -142,18 +141,12 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPref();
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarDividerColor: Colors.grey,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ));
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return new Scaffold(
@@ -171,7 +164,7 @@ class _LoginPageState extends State<LoginPage>
                     : 775.0,
                 decoration: BoxDecoration(
                   image: new DecorationImage(
-                      image: new ExactAssetImage('assets/images/login_1.png'),
+                      image: new ExactAssetImage('assets/images/login.png'),
                       fit: BoxFit.cover),
                 ),
                 child: Column(

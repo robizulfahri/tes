@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: AppTheme.textTheme,
-        // platform: TargetPlatform.android,
+        platform: TargetPlatform.iOS,
       ),
       home: AnimatedSplashScreen(),
       routes: <String, WidgetBuilder>{

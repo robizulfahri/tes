@@ -1,12 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/bottom_navigation_view/bottom_bar_view.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/course_info_screen.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/fintness_app_theme.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/models/tabIcon_data.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/my_diary/my_diary_screen.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/fitness_app/traning/training_screen.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/bottom_bar_view.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
+import 'package:neotelemetri_or11/Tabs/ComingSoonPage.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 
 class Dashboard extends StatefulWidget {
@@ -20,7 +16,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   Widget tabBody = Container(
-    color: FintnessAppTheme.background,
+    color: DashboardTheme.background,
   );
 
   @override
@@ -32,7 +28,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 300), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody = ComingSoonPage(animationController: animationController);
     super.initState();
   }
 
@@ -45,7 +41,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: FintnessAppTheme.background,
+      color: DashboardTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: FutureBuilder<bool>(
@@ -89,7 +85,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                 }
                 setState(() {
                   tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                      ComingSoonPage(animationController: animationController);
                 });
               });
             } else if (index == 1) {
@@ -99,7 +95,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                 }
                 setState(() {
                   tabBody =
-                      TrainingScreen(animationController: animationController);
+                      ComingSoonPage(animationController: animationController);
                 });
               });
             } else if (index == 2) {
@@ -108,8 +104,8 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  tabBody = CourseInfoScreen(
-                      animationController: animationController);
+                  tabBody =
+                      ComingSoonPage(animationController: animationController);
                 });
               });
             } else if (index == 3) {

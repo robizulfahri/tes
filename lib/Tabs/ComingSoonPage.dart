@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:neotelemetri_or11/Models/ComingSoon/comming_soon.dart';
+import 'package:neotelemetri_or11/Models/ComingSoon/logo_divisi.dart';
+import 'package:neotelemetri_or11/Models/ComingSoon/logo_or.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
-import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({Key key, this.animationController}) : super(key: key);
+class ComingSoonPage extends StatefulWidget {
+  const ComingSoonPage({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _UserProfilePageState createState() => _UserProfilePageState();
+  _ComingSoonPageState createState() => _ComingSoonPageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage>
+class _ComingSoonPageState extends State<ComingSoonPage>
     with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
@@ -50,86 +51,46 @@ class _UserProfilePageState extends State<UserProfilePage>
       }
     });
     super.initState();
-    // getPref();
   }
 
   String email = "";
   String name = "";
 
-  // getPref() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     name = preferences.getString("name");
-  //     email = preferences.getString("email");
-  //   });
-  // }
-
   void addAllListData() {
-    const int count = 5;
+    const int count = 3;
 
     listViews.add(
-      AvatarGlow(
-        duration: Duration(milliseconds: 2000),
-        endRadius: 140,
-        shape: BoxShape.circle,
-        repeatPauseDuration: Duration(milliseconds: 100),
-        repeat: true,
-        glowColor: Colors.blue,
-        showTwoGlows: true,
-        startDelay: Duration(milliseconds: 10),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/avatar.jpg'),
-          radius: 70.0,
-        ),
-        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController1: widget.animationController,
+      LogoOr(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                parent: widget.animationController,
+                curve: Interval((1 / count) * 1, 1.0,
+                    curve: Curves.fastOutSlowIn))),
+        mainScreenAnimationController: widget.animationController,
       ),
     );
 
-    // listViews.add(
-    //   WorkoutView(
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
-    // listViews.add(
-    //   RunningView(
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
+    listViews.add(
+      CommingSoonView(
+        titleTxt: 'COMMING \nSOON',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
 
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Area of focus',
-    //     subTxt: 'more',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   AreaListView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController,
-    //             curve: Interval((1 / count) * 5, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
+    listViews.add(
+      LogoDivisi(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                parent: widget.animationController,
+                curve: Interval((1 / count) * 3, 1.0,
+                    curve: Curves.fastOutSlowIn))),
+        mainScreenAnimationController: widget.animationController,
+      ),
+    );
   }
 
   Future<bool> getData() async {
@@ -140,7 +101,13 @@ class _UserProfilePageState extends State<UserProfilePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: DashboardTheme.background,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/coming_soon.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      // color: FintnessAppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -165,12 +132,12 @@ class _UserProfilePageState extends State<UserProfilePage>
         } else {
           return ListView.builder(
             controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
+            // padding: EdgeInsets.only(
+            //   top: AppBar().preferredSize.height +
+            //       MediaQuery.of(context).padding.top +
+            //       24,
+            //   bottom: 62 + MediaQuery.of(context).padding.bottom,
+            // ),
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
@@ -226,18 +193,23 @@ class _UserProfilePageState extends State<UserProfilePage>
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Profile',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontFamily: 'OpenSansBold',
-                                    // fontFamily: FintnessAppTheme.fontName,
-                                    // // fontWeight: FontWeight.w700,
-                                    fontSize: 22 + 6 - 6 * topBarOpacity,
-                                    letterSpacing: 1.2,
-                                    color: DashboardTheme.darkerText,
-                                  ),
+                                child: Image.asset(
+                                  "assets/images/logo_neo.png",
+                                  width: 30,
+                                  height: 30,
                                 ),
+                                // child: Text(
+                                //   '',
+                                //   textAlign: TextAlign.left,
+                                //   style: TextStyle(
+                                //     fontFamily: 'OpenSansBold',
+                                //     // fontFamily: FintnessAppTheme.fontName,
+                                //     // // fontWeight: FontWeight.w700,
+                                //     fontSize: 22 + 6 - 6 * topBarOpacity,
+                                //     letterSpacing: 1.2,
+                                //     color: FintnessAppTheme.darkerText,
+                                //   ),
+                                // ),
                               ),
                             ),
                           ],

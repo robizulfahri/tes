@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-
-import '../fintness_app_theme.dart';
-import '../models/tabIcon_data.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
+import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
@@ -41,7 +40,7 @@ class _BottomBarViewState extends State<BottomBarView>
             return Transform(
               transform: Matrix4.translationValues(0.0, 0.0, 0.0),
               child: PhysicalShape(
-                color: FintnessAppTheme.white,
+                color: DashboardTheme.white,
                 elevation: 16.0,
                 clipper: TabClipper(
                     radius: Tween<double>(begin: 0.0, end: 1.0)
@@ -200,7 +199,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 8,
                       height: 8,
                       decoration: BoxDecoration(
-                        color: FintnessAppTheme.nearlyDarkBlue,
+                        color: Color(0xff8051A0),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -221,7 +220,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 4,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: FintnessAppTheme.nearlyDarkBlue,
+                        color: Color(0xff8051A0),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -242,7 +241,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 6,
                       height: 6,
                       decoration: BoxDecoration(
-                        color: FintnessAppTheme.nearlyDarkBlue,
+                        color: Color(0xff8051A0),
                         shape: BoxShape.circle,
                       ),
                     ),

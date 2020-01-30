@@ -11,18 +11,21 @@ class AvatarGlow extends StatefulWidget {
   final Color glowColor;
   final Duration startDelay;
   final BoxShape shape;
+  final AnimationController animationController1;
+  final Animation animation1;
 
-  AvatarGlow({
-    @required this.endRadius,
-    @required this.child,
-    this.shape,
-    this.duration,
-    this.repeat = true,
-    this.repeatPauseDuration,
-    this.showTwoGlows = true,
-    this.glowColor,
-    this.startDelay,
-  });
+  AvatarGlow(
+      {@required this.endRadius,
+      @required this.child,
+      this.shape,
+      this.duration,
+      this.repeat = true,
+      this.repeatPauseDuration,
+      this.showTwoGlows = true,
+      this.glowColor,
+      this.startDelay,
+      this.animationController1,
+      this.animation1});
 
   @override
   _AvatarGlowState createState() => _AvatarGlowState();
@@ -34,6 +37,8 @@ class _AvatarGlowState extends State<AvatarGlow>
   Animation<double> bigDiscAnimation;
   Animation<double> alphaAnimation;
   AnimationController controller;
+  AnimationController animationController1;
+  Animation animation1;
 
   @override
   void initState() {
@@ -41,19 +46,19 @@ class _AvatarGlowState extends State<AvatarGlow>
     controller = AnimationController(
         duration: widget.duration ?? Duration(milliseconds: 2000), vsync: this);
     final Animation curve =
-    CurvedAnimation(parent: controller, curve: Curves.decelerate);
+        CurvedAnimation(parent: controller, curve: Curves.decelerate);
     smallDiscAnimation = Tween(
-        begin: (widget.endRadius * 2) / 6,
-        end: (widget.endRadius * 2) * (3 / 4))
+            begin: (widget.endRadius * 2) / 6,
+            end: (widget.endRadius * 2) * (3 / 4))
         .animate(curve)
-      ..addListener(() {
-        setState(() {});
-      });
+          ..addListener(() {
+            setState(() {});
+          });
     bigDiscAnimation =
-    Tween(begin: 0.0, end: (widget.endRadius * 2)).animate(curve)
-      ..addListener(() {
-        setState(() {});
-      });
+        Tween(begin: 0.0, end: (widget.endRadius * 2)).animate(curve)
+          ..addListener(() {
+            setState(() {});
+          });
     alphaAnimation = Tween(begin: 0.30, end: 0.0).animate(controller);
     controller.addStatusListener((_) async {
       if (controller.status == AnimationStatus.completed) {
@@ -97,19 +102,19 @@ class _AvatarGlowState extends State<AvatarGlow>
           ),
           widget.showTwoGlows
               ? Container(
-            height: smallDiscAnimation.value,
-            width: smallDiscAnimation.value,
-            child: SizedBox(),
-            decoration: BoxDecoration(
-              shape: widget.shape ?? BoxShape.circle,
-              color: (widget.glowColor ?? Colors.white)
-                  .withOpacity(alphaAnimation.value),
-            ),
-          )
+                  height: smallDiscAnimation.value,
+                  width: smallDiscAnimation.value,
+                  child: SizedBox(),
+                  decoration: BoxDecoration(
+                    shape: widget.shape ?? BoxShape.circle,
+                    color: (widget.glowColor ?? Colors.white)
+                        .withOpacity(alphaAnimation.value),
+                  ),
+                )
               : SizedBox(
-            height: 0.0,
-            width: 0.0,
-          ),
+                  height: 0.0,
+                  width: 0.0,
+                ),
           widget.child,
         ],
       ),
