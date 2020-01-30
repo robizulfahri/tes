@@ -74,7 +74,7 @@ class _UserProfilePageState extends State<UserProfilePage>
         shape: BoxShape.circle,
         repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
-        glowColor: Colors.blue,
+        glowColor: Color(0xff8051A0),
         showTwoGlows: true,
         startDelay: Duration(milliseconds: 10),
         child: CircleAvatar(
@@ -89,47 +89,71 @@ class _UserProfilePageState extends State<UserProfilePage>
       ),
     );
 
-    // listViews.add(
-    //   WorkoutView(
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
-    // listViews.add(
-    //   RunningView(
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
+    listViews.add(
+      AvatarGlow(
+        duration: Duration(milliseconds: 2000),
+        endRadius: 140,
+        shape: BoxShape.circle,
+        repeatPauseDuration: Duration(milliseconds: 100),
+        repeat: true,
+        glowColor: Color(0xff8051A0),
+        showTwoGlows: true,
+        startDelay: Duration(milliseconds: 10),
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/avatar.jpg'),
+          radius: 70.0,
+        ),
+        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController1: widget.animationController,
+      ),
+    );
 
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Area of focus',
-    //     subTxt: 'more',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
+    listViews.add(
+      AvatarGlow(
+        duration: Duration(milliseconds: 2000),
+        endRadius: 140,
+        shape: BoxShape.circle,
+        repeatPauseDuration: Duration(milliseconds: 100),
+        repeat: true,
+        glowColor: Color(0xff8051A0),
+        showTwoGlows: true,
+        startDelay: Duration(milliseconds: 10),
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/avatar.jpg'),
+          radius: 70.0,
+        ),
+        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController1: widget.animationController,
+      ),
+    );
 
-    // listViews.add(
-    //   AreaListView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController,
-    //             curve: Interval((1 / count) * 5, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
+    listViews.add(
+      AvatarGlow(
+        duration: Duration(milliseconds: 2000),
+        endRadius: 140,
+        shape: BoxShape.circle,
+        repeatPauseDuration: Duration(milliseconds: 100),
+        repeat: true,
+        glowColor: Color(0xff8051A0),
+        showTwoGlows: true,
+        startDelay: Duration(milliseconds: 10),
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/avatar.jpg'),
+          radius: 70.0,
+        ),
+        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController1: widget.animationController,
+      ),
+    );
   }
 
   Future<bool> getData() async {
@@ -140,7 +164,12 @@ class _UserProfilePageState extends State<UserProfilePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: DashboardTheme.background,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/coming_soon.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -231,8 +260,6 @@ class _UserProfilePageState extends State<UserProfilePage>
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: 'OpenSansBold',
-                                    // fontFamily: FintnessAppTheme.fontName,
-                                    // // fontWeight: FontWeight.w700,
                                     fontSize: 22 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
                                     color: DashboardTheme.darkerText,

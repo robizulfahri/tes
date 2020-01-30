@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/ComingSoon/comming_soon.dart';
+import 'package:neotelemetri_or11/Models/ComingSoon/coming_soon.dart';
 import 'package:neotelemetri_or11/Models/ComingSoon/logo_divisi.dart';
 import 'package:neotelemetri_or11/Models/ComingSoon/logo_or.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
@@ -71,8 +71,8 @@ class _ComingSoonPageState extends State<ComingSoonPage>
     );
 
     listViews.add(
-      CommingSoonView(
-        titleTxt: 'COMMING \nSOON',
+      ComingSoonView(
+        titleTxt: 'COMING \nSOON',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -107,7 +107,6 @@ class _ComingSoonPageState extends State<ComingSoonPage>
           fit: BoxFit.cover,
         ),
       ),
-      // color: FintnessAppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
