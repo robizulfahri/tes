@@ -133,7 +133,6 @@ class DataView extends StatelessWidget {
                   ),
                 ],
               ),
-              // padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
             ),
           ),
         );

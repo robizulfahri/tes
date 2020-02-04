@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
+import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow%20copy%202.dart';
+import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow%20copy.dart';
 import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({Key key, this.animationController}) : super(key: key);
@@ -50,25 +51,16 @@ class _UserProfilePageState extends State<UserProfilePage>
       }
     });
     super.initState();
-    // getPref();
   }
 
   String email = "";
   String name = "";
 
-  // getPref() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     name = preferences.getString("name");
-  //     email = preferences.getString("email");
-  //   });
-  // }
-
   void addAllListData() {
     const int count = 5;
 
     listViews.add(
-      AvatarGlow(
+      AvatarGlow1(
         duration: Duration(milliseconds: 2000),
         endRadius: 140,
         shape: BoxShape.circle,
@@ -90,7 +82,7 @@ class _UserProfilePageState extends State<UserProfilePage>
     );
 
     listViews.add(
-      AvatarGlow(
+      AvatarGlow1(
         duration: Duration(milliseconds: 2000),
         endRadius: 140,
         shape: BoxShape.circle,
@@ -106,7 +98,7 @@ class _UserProfilePageState extends State<UserProfilePage>
         animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
         animationController1: widget.animationController,
       ),
     );
@@ -128,8 +120,8 @@ class _UserProfilePageState extends State<UserProfilePage>
         animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController1: widget.animationController,
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+        controller: widget.animationController,
       ),
     );
 
@@ -150,8 +142,8 @@ class _UserProfilePageState extends State<UserProfilePage>
         animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController1: widget.animationController,
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+        controller: widget.animationController,
       ),
     );
   }

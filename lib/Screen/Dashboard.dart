@@ -3,6 +3,7 @@ import 'package:neotelemetri_or11/Models/Dashboard/bottom_bar_view.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
 import 'package:neotelemetri_or11/Tabs/ComingSoonPage.dart';
+import 'package:neotelemetri_or11/Tabs/UserProfilePage%20copy.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 
 class Dashboard extends StatefulWidget {
@@ -114,8 +115,9 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      UserProfilePage(animationController: animationController);
+                  tabBody = UserProfilePage1(
+                    animationController: animationController,
+                  );
                 });
               });
             }

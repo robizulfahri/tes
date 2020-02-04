@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:neotelemetri_or11/Models/LoginPage/theme.dart' as Theme;
+import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Screen/Dashboard.dart';
+import 'package:neotelemetri_or11/Tabs/UserProfilePage%20copy.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -71,11 +72,10 @@ class _LoginPageState extends State<LoginPage>
   );
 
   _login() async {
-    var urlLogin = 'https://or.neotelemetri.com/coba/view/mobile_login.php';
+    var urlLogin = 'https://or.neotelemetri.com/view/mobile_login.php';
     final response =
         await http.post(urlLogin, body: {"email": email, "password": password});
     final data = jsonDecode(response.body);
-    // String role = data['role'];
     int value = data['value'];
     String message = data['message'];
     String emailAPI = data['email'];
@@ -107,8 +107,8 @@ class _LoginPageState extends State<LoginPage>
             ),
             onPressed: () => Navigator.pop(context),
             gradient: LinearGradient(colors: [
-              Theme.Colors.loginGradientStart,
-              Theme.Colors.loginGradientEnd
+              Theme.Colorss.loginGradientStart,
+              Theme.Colorss.loginGradientEnd
             ]),
             radius: BorderRadius.circular(5.5),
           )
@@ -121,7 +121,6 @@ class _LoginPageState extends State<LoginPage>
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", value);
-      // preferences.setString("role", role);
       preferences.setString("email", email);
       preferences.setString("name", name);
       preferences.commit();
@@ -129,13 +128,21 @@ class _LoginPageState extends State<LoginPage>
   }
 
   var value;
-  // var role;
 
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       value = preferences.getInt("value");
       _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
+    });
+  }
+
+  signOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", null);
+      preferences.commit();
+      _loginStatus = LoginStatus.notSignIn;
     });
   }
 
@@ -307,20 +314,20 @@ class _LoginPageState extends State<LoginPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: Theme.Colors.loginGradientStart,
+                      color: Theme.Colorss.loginGradientStart,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: Theme.Colors.loginGradientEnd,
+                      color: Theme.Colorss.loginGradientEnd,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
                       colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
+                        Theme.Colorss.loginGradientEnd,
+                        Theme.Colorss.loginGradientStart
                       ],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
@@ -329,7 +336,7 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 child: MaterialButton(
                   highlightColor: Colors.transparent,
-                  splashColor: Theme.Colors.loginGradientEnd,
+                  splashColor: Theme.Colorss.loginGradientEnd,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5.0))),
                   child: Padding(

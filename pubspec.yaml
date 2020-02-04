@@ -48,13 +48,17 @@ flutter:
     # - assets/images/intro_2.png
     # - assets/images/intro_3.png
     # - assets/images/comming_soon.png
+    # - assets/images/jk_female.png
+    # - assets/images/jk_male.png
+    # - assets/images/gd_a.png
+    # - assets/images/gd_b.png
+    # - assets/images/gd_ab.png
+    # - assets/images/gd_b.png
+    # - assets/images/agama_islam.png
+    # - assets/images/logout.png
 
 
   fonts:
-    - family: RobotoMonoBold
-      fonts:
-        - asset: assets/fonts/RobotoMono-Bold.ttf
-
     - family: OpenSansBold
       fonts:
         - asset: assets/fonts/OpenSans-Bold.ttf
@@ -62,6 +66,16 @@ flutter:
     - family: OpenSansSemiBold
       fonts:
         - asset: assets/fonts/OpenSans-Semibold.ttf
+
+        
+    - family: OpenSansBoldItalic
+      fonts:
+        - asset: assets/fonts/OpenSans-BoldItalic.ttf
+
+        
+    - family: RobotoMonoBold
+      fonts:
+        - asset: assets/fonts/RobotoMono-Bold.ttf
 
     - family: Raleway
       fonts:

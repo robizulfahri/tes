@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         ANIMATED_SPLASH: (BuildContext context) => new AnimatedSplashScreen(),
         PARALAX_INTRO: (BuildContext context) => new ParalaxIntroSlider(),
         LOGIN_SCREEN: (BuildContext context) => new LoginPage(),
-        DASHBOARD: (BuildContext context) => new Dashboard(),
+        // DASHBOARD: (BuildContext context) => new Dashboard(),
         // FIRST_TAB: (BuildContext context) => new First(),
         // SECOND_TAB: (BuildContext context) => new Second(),
         // THIRD_TAB: (BuildContext context) => new OnlineExamsPage(),

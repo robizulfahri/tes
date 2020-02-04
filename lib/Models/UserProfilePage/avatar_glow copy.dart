@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-class AvatarGlow extends StatefulWidget {
+class AvatarGlow1 extends StatefulWidget {
   final bool repeat;
   final Duration duration;
   final double endRadius;
@@ -11,10 +11,10 @@ class AvatarGlow extends StatefulWidget {
   final Color glowColor;
   final Duration startDelay;
   final BoxShape shape;
-  final AnimationController controller;
+  final AnimationController animationController1;
   final Animation animation1;
 
-  AvatarGlow(
+  AvatarGlow1(
       {@required this.endRadius,
       @required this.child,
       this.shape,
@@ -24,19 +24,21 @@ class AvatarGlow extends StatefulWidget {
       this.showTwoGlows = true,
       this.glowColor,
       this.startDelay,
-      this.controller,
+      this.animationController1,
       this.animation1});
 
   @override
-  _AvatarGlowState createState() => _AvatarGlowState();
+  _AvatarGlow1State createState() => _AvatarGlow1State();
 }
 
-class _AvatarGlowState extends State<AvatarGlow>
+class _AvatarGlow1State extends State<AvatarGlow1>
     with SingleTickerProviderStateMixin {
   Animation<double> smallDiscAnimation;
   Animation<double> bigDiscAnimation;
   Animation<double> alphaAnimation;
   AnimationController controller;
+  AnimationController animationController1;
+  Animation animation1;
 
   @override
   void initState() {

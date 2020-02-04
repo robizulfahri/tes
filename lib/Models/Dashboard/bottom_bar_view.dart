@@ -41,14 +41,14 @@ class _BottomBarViewState extends State<BottomBarView>
               transform: Matrix4.translationValues(0.0, 0.0, 0.0),
               child: PhysicalShape(
                 color: DashboardTheme.white,
-                elevation: 16.0,
+                elevation: 96.0,
                 clipper: TabClipper(
                     radius: Tween<double>(begin: 0.0, end: 1.0)
                             .animate(CurvedAnimation(
                                 parent: animationController,
                                 curve: Curves.fastOutSlowIn))
                             .value *
-                        40.0),
+                        60.0),
                 child: Column(
                   children: <Widget>[
                     SizedBox(

@@ -131,12 +131,6 @@ class _ComingSoonPageState extends State<ComingSoonPage>
         } else {
           return ListView.builder(
             controller: scrollController,
-            // padding: EdgeInsets.only(
-            //   top: AppBar().preferredSize.height +
-            //       MediaQuery.of(context).padding.top +
-            //       24,
-            //   bottom: 62 + MediaQuery.of(context).padding.bottom,
-            // ),
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
@@ -197,18 +191,6 @@ class _ComingSoonPageState extends State<ComingSoonPage>
                                   width: 30,
                                   height: 30,
                                 ),
-                                // child: Text(
-                                //   '',
-                                //   textAlign: TextAlign.left,
-                                //   style: TextStyle(
-                                //     fontFamily: 'OpenSansBold',
-                                //     // fontFamily: FintnessAppTheme.fontName,
-                                //     // // fontWeight: FontWeight.w700,
-                                //     fontSize: 22 + 6 - 6 * topBarOpacity,
-                                //     letterSpacing: 1.2,
-                                //     color: FintnessAppTheme.darkerText,
-                                //   ),
-                                // ),
                               ),
                             ),
                           ],
