@@ -1,19 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
-import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow%20copy%202.dart';
-import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow%20copy.dart';
+import 'package:neotelemetri_or11/Constant/Constant.dart';
+import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow.dart';
+import 'package:neotelemetri_or11/Models/UserProfilePage/tab_view.dart';
+import 'package:neotelemetri_or11/Screen/LoginPage.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({Key key, this.animationController}) : super(key: key);
-
+  const UserProfilePage({Key key, this.animationController, this.signOut})
+      : super(key: key);
   final AnimationController animationController;
+  final VoidCallback signOut;
+
   @override
   _UserProfilePageState createState() => _UserProfilePageState();
 }
 
 class _UserProfilePageState extends State<UserProfilePage>
     with TickerProviderStateMixin {
+  LoginStatus _loginStatus = LoginStatus.notSignIn;
+
+  signOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", null);
+      preferences.commit();
+      _loginStatus = LoginStatus.notSignIn;
+    });
+    if (value == 0) {
+      Navigator.of(context).pushReplacementNamed(LOGIN_SCREEN);
+    }
+  }
+
+  getPref() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      value = preferences.getInt("value");
+      _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
+    });
+    if (_loginStatus == LoginStatus.notSignIn) {
+      Navigator.of(context).pushReplacementNamed(LOGIN_SCREEN);
+    }
+    ;
+  }
+
+  var value;
+
   Animation<double> topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -53,20 +87,17 @@ class _UserProfilePageState extends State<UserProfilePage>
     super.initState();
   }
 
-  String email = "";
-  String name = "";
-
   void addAllListData() {
-    const int count = 5;
+    const int count = 2;
 
     listViews.add(
-      AvatarGlow1(
+      AvatarGlow(
         duration: Duration(milliseconds: 2000),
         endRadius: 140,
         shape: BoxShape.circle,
         repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
-        glowColor: Color(0xff8051A0),
+        glowColor: AppTheme.eminence,
         showTwoGlows: true,
         startDelay: Duration(milliseconds: 10),
         child: CircleAvatar(
@@ -77,74 +108,12 @@ class _UserProfilePageState extends State<UserProfilePage>
             parent: widget.animationController,
             curve:
                 Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController1: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      AvatarGlow1(
-        duration: Duration(milliseconds: 2000),
-        endRadius: 140,
-        shape: BoxShape.circle,
-        repeatPauseDuration: Duration(milliseconds: 100),
-        repeat: true,
-        glowColor: Color(0xff8051A0),
-        showTwoGlows: true,
-        startDelay: Duration(milliseconds: 10),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/avatar.jpg'),
-          radius: 70.0,
-        ),
-        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController1: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      AvatarGlow(
-        duration: Duration(milliseconds: 2000),
-        endRadius: 140,
-        shape: BoxShape.circle,
-        repeatPauseDuration: Duration(milliseconds: 100),
-        repeat: true,
-        glowColor: Color(0xff8051A0),
-        showTwoGlows: true,
-        startDelay: Duration(milliseconds: 10),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/avatar.jpg'),
-          radius: 70.0,
-        ),
-        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
         controller: widget.animationController,
       ),
     );
 
     listViews.add(
-      AvatarGlow(
-        duration: Duration(milliseconds: 2000),
-        endRadius: 140,
-        shape: BoxShape.circle,
-        repeatPauseDuration: Duration(milliseconds: 100),
-        repeat: true,
-        glowColor: Color(0xff8051A0),
-        showTwoGlows: true,
-        startDelay: Duration(milliseconds: 10),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/avatar.jpg'),
-          radius: 70.0,
-        ),
-        animation1: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        controller: widget.animationController,
-      ),
+      TabView(),
     );
   }
 
@@ -156,12 +125,7 @@ class _UserProfilePageState extends State<UserProfilePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/coming_soon.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: BoxDecoration(color: AppTheme.nearlyWhite),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -217,15 +181,14 @@ class _UserProfilePageState extends State<UserProfilePage>
                     0.0, 30 * (1.0 - topBarAnimation.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: DashboardTheme.white.withOpacity(topBarOpacity),
+                    color: AppTheme.white.withOpacity(topBarOpacity),
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(32.0),
                       bottomRight: Radius.circular(32.0),
                     ),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                          color: DashboardTheme.grey
-                              .withOpacity(0.4 * topBarOpacity),
+                          color: AppTheme.grey.withOpacity(0.4 * topBarOpacity),
                           offset: const Offset(1.1, 1.1),
                           blurRadius: 10.0),
                     ],
@@ -251,11 +214,102 @@ class _UserProfilePageState extends State<UserProfilePage>
                                   'Profile',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    fontFamily: 'OpenSansBold',
+                                    fontFamily: AppTheme.fontName,
+                                    fontWeight: FontWeight.w700,
                                     fontSize: 22 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
-                                    color: DashboardTheme.darkerText,
+                                    color: AppTheme.darkerText,
                                   ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 38,
+                              width: 38,
+                              child: Center(
+                                child: IconButton(
+                                  onPressed: () {
+                                    var alert = Alert(
+                                      style: alertStyle,
+                                      context: context,
+                                      title: ("Oh no!"),
+                                      desc: "You're leaving...\nAre you sure?",
+                                      image: Image.asset(
+                                          "assets/images/logout.png",
+                                          width: 50,
+                                          height: 50),
+                                      content: Column(
+                                        children: <Widget>[
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(25.0)),
+                                                gradient: new LinearGradient(
+                                                    colors: [
+                                                      Theme.Colorss
+                                                          .loginGradientStart,
+                                                      Theme.Colorss
+                                                          .loginGradientEnd,
+                                                    ],
+                                                    begin:
+                                                        const FractionalOffset(
+                                                            0.2, 0.2),
+                                                    end: const FractionalOffset(
+                                                        1.0, 1.0),
+                                                    stops: [0.0, 1.0],
+                                                    tileMode: TileMode.clamp),
+                                              ),
+                                              child: MaterialButton(
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                splashColor: Colors.transparent,
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical: 10.0,
+                                                      horizontal: 19.0),
+                                                  child: Text(
+                                                    "Naah, Just Kidding",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily:
+                                                            AppTheme.fontName,
+                                                        color: AppTheme.white,
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                              )),
+                                        ],
+                                      ),
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "Yes, Log Me Out",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: AppTheme.eminence,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: AppTheme.fontName,
+                                                fontSize: 18),
+                                          ),
+                                          onPressed: () {
+                                            signOut();
+                                          },
+                                          color: AppTheme.white,
+                                        )
+                                      ],
+                                    );
+                                    alert.show();
+                                  },
+                                  icon: Icon(Icons.power_settings_new),
+                                  color: AppTheme.darkerText,
                                 ),
                               ),
                             ),
@@ -272,4 +326,22 @@ class _UserProfilePageState extends State<UserProfilePage>
       ],
     );
   }
+
+  var alertStyle = AlertStyle(
+    animationType: AnimationType.fromTop,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontFamily: AppTheme.fontName),
+    animationDuration: Duration(milliseconds: 400),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8.0),
+      side: BorderSide(
+        color: Colors.transparent,
+      ),
+    ),
+    titleStyle: TextStyle(
+      fontFamily: AppTheme.fontName,
+      color: Colors.red,
+    ),
+  );
 }

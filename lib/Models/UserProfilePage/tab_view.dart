@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
 import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/tab_1_view.dart';
 import 'package:neotelemetri_or11/Models/UserProfilePage/tab_2_view.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
-class CourseInfoScreen extends StatefulWidget {
+class TabView extends StatefulWidget {
   @override
-  _CourseInfoScreenState createState() => _CourseInfoScreenState();
+  _TabViewState createState() => _TabViewState();
 }
 
-class _CourseInfoScreenState extends State<CourseInfoScreen>
-    with TickerProviderStateMixin {
-  final double infoHeight = 464.0;
+class _TabViewState extends State<TabView> with TickerProviderStateMixin {
+  final double infoHeight = 164.0;
   AnimationController animationController;
   Animation<double> animation;
   double opacity1 = 0.0;
@@ -48,7 +47,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
-        240.0;
+        280.0;
     return AnimatedBuilder(
       animation: animationController,
       builder: (BuildContext context, Widget child) {
@@ -62,8 +61,10 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                   top: 2,
                 ),
                 decoration: BoxDecoration(
-                  color: DashboardTheme.nearlyBlack,
-                  // color: Color(0xffF2F8F8),
+                  gradient: new LinearGradient(colors: [
+                    Theme.Colorss.loginGradientEnd,
+                    Theme.Colorss.loginGradientStart
+                  ], begin: Alignment.topLeft, end: Alignment.topRight),
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(35.0),
                       topRight: Radius.circular(35.0),
@@ -71,9 +72,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                       bottomRight: Radius.circular(35.0)),
                   boxShadow: [
                     BoxShadow(
-                        color: DashboardTheme.grey.withOpacity(0.5),
+                        color: AppTheme.grey.withOpacity(0.5),
                         offset: const Offset(1.1, 1.1),
-                        blurRadius: 8.0),
+                        blurRadius: 10.0),
                   ],
                 ),
                 constraints: BoxConstraints(
@@ -89,8 +90,8 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                           indicatorColor: Colors.transparent,
                           labelStyle: TextStyle(fontSize: 40),
                           unselectedLabelStyle: TextStyle(fontSize: 20),
-                          labelColor: Theme.Colorss.loginGradientStart,
-                          unselectedLabelColor: DashboardTheme.nearlyWhite,
+                          labelColor: AppTheme.dark_grey,
+                          unselectedLabelColor: AppTheme.nearlyWhite,
                           indicatorSize: TabBarIndicatorSize.tab,
                           indicator: BoxDecoration(
                             color: Colors.transparent,

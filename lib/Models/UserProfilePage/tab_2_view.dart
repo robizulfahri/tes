@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:neotelemetri_or11/main.dart';
 
 class Tab2View extends StatefulWidget {
@@ -9,7 +9,7 @@ class Tab2View extends StatefulWidget {
 
 class Tab2ViewState extends State<Tab2View>
     with TickerProviderStateMixin<Tab2View> {
-  final double infoHeight = 464.0;
+  final double infoHeight = 164.0;
   AnimationController animationController;
   Animation<double> animation, delayedAnimation1;
   double opacity1 = 0.0;
@@ -99,7 +99,7 @@ class Tab2ViewState extends State<Tab2View>
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
-        240.0;
+        280.0;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -108,7 +108,7 @@ class Tab2ViewState extends State<Tab2View>
             bottomLeft: Radius.circular(35),
             bottomRight: Radius.circular(35),
           ),
-          color: DashboardTheme.nearlyWhite),
+          color: AppTheme.nearlyWhite),
       padding: new EdgeInsets.only(bottom: 10.0, top: 20),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -178,11 +178,11 @@ class Tab2ViewState extends State<Tab2View>
                                         // divisiListData.titleTxt,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: DashboardTheme.fontName,
+                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
                                           letterSpacing: 0.2,
-                                          color: DashboardTheme.white,
+                                          color: AppTheme.white,
                                         ),
                                       ),
                                     ],
@@ -197,8 +197,7 @@ class Tab2ViewState extends State<Tab2View>
                                 width: 94,
                                 height: 94,
                                 decoration: BoxDecoration(
-                                  color: DashboardTheme.nearlyWhite
-                                      .withOpacity(0.2),
+                                  color: AppTheme.nearlyWhite.withOpacity(0.2),
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -232,7 +231,7 @@ class Tab2ViewState extends State<Tab2View>
                                 fontFamily: 'OpenSansBold',
                                 fontSize: 15,
                                 letterSpacing: 0.5,
-                                color: DashboardTheme.darkText,
+                                color: AppTheme.darkText,
                               ),
                             ),
                             SizedBox(
@@ -258,7 +257,7 @@ class Tab2ViewState extends State<Tab2View>
                                 fontFamily: 'OpenSansBold',
                                 fontSize: 15,
                                 letterSpacing: 0.15,
-                                color: DashboardTheme.darkText,
+                                color: AppTheme.darkText,
                               ),
                             ),
                           ],
@@ -281,7 +280,7 @@ class Tab2ViewState extends State<Tab2View>
                       fontFamily: 'OpenSansBold',
                       fontSize: 23,
                       letterSpacing: 0.5,
-                      color: DashboardTheme.darkerText,
+                      color: AppTheme.darkerText,
                     ),
                   ),
                 ),
@@ -301,7 +300,7 @@ class Tab2ViewState extends State<Tab2View>
                           fontFamily: 'OpenSansSemiBold',
                           fontSize: 14,
                           letterSpacing: 0.27,
-                          color: DashboardTheme.grey,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ],
@@ -321,7 +320,7 @@ class Tab2ViewState extends State<Tab2View>
                       fontFamily: 'OpenSansBold',
                       fontSize: 23,
                       letterSpacing: 0.5,
-                      color: DashboardTheme.darkerText,
+                      color: AppTheme.darkerText,
                     ),
                   ),
                 ),
@@ -341,7 +340,7 @@ class Tab2ViewState extends State<Tab2View>
                           fontFamily: 'OpenSansSemiBold',
                           fontSize: 14,
                           letterSpacing: 0.27,
-                          color: DashboardTheme.grey,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ],
@@ -361,7 +360,7 @@ class Tab2ViewState extends State<Tab2View>
                       fontFamily: 'OpenSansBold',
                       fontSize: 23,
                       letterSpacing: 0.5,
-                      color: DashboardTheme.darkerText,
+                      color: AppTheme.darkerText,
                     ),
                   ),
                 ),
@@ -381,7 +380,7 @@ class Tab2ViewState extends State<Tab2View>
                           fontFamily: 'OpenSansSemiBold',
                           fontSize: 14,
                           letterSpacing: 0.27,
-                          color: DashboardTheme.grey,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ],
@@ -401,7 +400,7 @@ class Tab2ViewState extends State<Tab2View>
                       fontFamily: 'OpenSansBold',
                       fontSize: 23,
                       letterSpacing: 0.5,
-                      color: DashboardTheme.darkerText,
+                      color: AppTheme.darkerText,
                     ),
                   ),
                 ),
@@ -421,7 +420,7 @@ class Tab2ViewState extends State<Tab2View>
                           fontFamily: 'OpenSansSemiBold',
                           fontSize: 14,
                           letterSpacing: 0.27,
-                          color: DashboardTheme.grey,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ],
@@ -441,7 +440,7 @@ class Tab2ViewState extends State<Tab2View>
                       fontFamily: 'OpenSansBold',
                       fontSize: 23,
                       letterSpacing: 0.5,
-                      color: DashboardTheme.darkerText,
+                      color: AppTheme.darkerText,
                     ),
                   ),
                 ),
@@ -461,7 +460,7 @@ class Tab2ViewState extends State<Tab2View>
                           fontFamily: 'OpenSansSemiBold',
                           fontSize: 14,
                           letterSpacing: 0.27,
-                          color: DashboardTheme.grey,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ],
@@ -493,7 +492,7 @@ class Tab2ViewState extends State<Tab2View>
           ),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: DashboardTheme.dark_grey.withOpacity(0.3),
+                color: AppTheme.dark_grey.withOpacity(0.3),
                 offset: const Offset(0.0, -5.1),
                 blurRadius: 8.0),
           ],
@@ -512,7 +511,7 @@ class Tab2ViewState extends State<Tab2View>
                     fontFamily: 'OpenSansBold',
                     fontSize: 14,
                     letterSpacing: 0.27,
-                    color: DashboardTheme.nearlyWhite),
+                    color: AppTheme.nearlyWhite),
               ),
               Text(
                 text2,
@@ -521,7 +520,7 @@ class Tab2ViewState extends State<Tab2View>
                   fontFamily: 'OpenSansBoldItalic',
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: DashboardTheme.nearlyBlack,
+                  color: AppTheme.nearlyBlack,
                 ),
               ),
             ],

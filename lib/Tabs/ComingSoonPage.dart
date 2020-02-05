@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:neotelemetri_or11/Models/ComingSoon/coming_soon.dart';
 import 'package:neotelemetri_or11/Models/ComingSoon/logo_divisi.dart';
 import 'package:neotelemetri_or11/Models/ComingSoon/logo_or.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
 class ComingSoonPage extends StatefulWidget {
   const ComingSoonPage({Key key, this.animationController}) : super(key: key);
@@ -156,15 +156,14 @@ class _ComingSoonPageState extends State<ComingSoonPage>
                     0.0, 30 * (1.0 - topBarAnimation.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: DashboardTheme.white.withOpacity(topBarOpacity),
+                    color: AppTheme.white.withOpacity(topBarOpacity),
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(32.0),
                       bottomRight: Radius.circular(32.0),
                     ),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                          color: DashboardTheme.grey
-                              .withOpacity(0.4 * topBarOpacity),
+                          color: AppTheme.grey.withOpacity(0.4 * topBarOpacity),
                           offset: const Offset(1.1, 1.1),
                           blurRadius: 10.0),
                     ],

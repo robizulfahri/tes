@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
@@ -40,7 +40,7 @@ class _BottomBarViewState extends State<BottomBarView>
             return Transform(
               transform: Matrix4.translationValues(0.0, 0.0, 0.0),
               child: PhysicalShape(
-                color: DashboardTheme.white,
+                color: AppTheme.white,
                 elevation: 96.0,
                 clipper: TabClipper(
                     radius: Tween<double>(begin: 0.0, end: 1.0)

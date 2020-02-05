@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/bottom_bar_view.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
 import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
 import 'package:neotelemetri_or11/Tabs/ComingSoonPage.dart';
-import 'package:neotelemetri_or11/Tabs/UserProfilePage%20copy.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -17,7 +16,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   Widget tabBody = Container(
-    color: DashboardTheme.background,
+    color: AppTheme.background,
   );
 
   @override
@@ -42,7 +41,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: DashboardTheme.background,
+      color: AppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: FutureBuilder<bool>(
@@ -115,7 +114,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  tabBody = UserProfilePage1(
+                  tabBody = UserProfilePage(
                     animationController: animationController,
                   );
                 });

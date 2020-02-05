@@ -6,11 +6,8 @@ import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:neotelemetri_or11/Screen/AnimatedSplashScreen.dart';
 import 'package:neotelemetri_or11/Screen/ParalaxIntroSlider.dart';
 import 'package:neotelemetri_or11/Screen/LoginPage.dart';
-// import 'package:neotelemetri_or11/Tabs/First.dart';
-// import 'package:neotelemetri_or11/Tabs/OnlineExamsPage.dart';
-// import 'package:neotelemetri_or11/Tabs/Second.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
-import 'appTheme.dart';
+import 'AppTheme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,10 +45,7 @@ class _MyAppState extends State<MyApp> {
         ANIMATED_SPLASH: (BuildContext context) => new AnimatedSplashScreen(),
         PARALAX_INTRO: (BuildContext context) => new ParalaxIntroSlider(),
         LOGIN_SCREEN: (BuildContext context) => new LoginPage(),
-        // DASHBOARD: (BuildContext context) => new Dashboard(),
-        // FIRST_TAB: (BuildContext context) => new First(),
-        // SECOND_TAB: (BuildContext context) => new Second(),
-        // THIRD_TAB: (BuildContext context) => new OnlineExamsPage(),
+        DASHBOARD: (BuildContext context) => new Dashboard(),
         FOURTH_TAB: (BuildContext context) => new UserProfilePage(),
       },
     );

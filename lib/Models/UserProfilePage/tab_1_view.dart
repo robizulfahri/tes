@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
 import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/box_list_view.dart';
 import 'package:neotelemetri_or11/Models/UserProfilePage/religion_gender_blood_list_view.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
 class Tab1View extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class Tab1View extends StatefulWidget {
 
 class Tab1ViewState extends State<Tab1View>
     with TickerProviderStateMixin<Tab1View> {
-  final double infoHeight = 464.0;
+  final double infoHeight = 164.0;
   AnimationController animationController;
   Animation<double> animation, delayedAnimation1;
   double opacity1 = 0.0;
@@ -51,7 +51,7 @@ class Tab1ViewState extends State<Tab1View>
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
-        240.0;
+        280.0;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -60,7 +60,7 @@ class Tab1ViewState extends State<Tab1View>
             bottomLeft: Radius.circular(35),
             bottomRight: Radius.circular(35),
           ),
-          color: DashboardTheme.nearlyWhite
+          color: AppTheme.nearlyWhite
           // gradient: new LinearGradient(
           //     colors: [
           //       Theme.Colorss.loginGradientEnd,
@@ -100,7 +100,7 @@ class Tab1ViewState extends State<Tab1View>
                             fontFamily: 'OpenSansBold',
                             fontSize: 32,
                             letterSpacing: 0.25,
-                            color: DashboardTheme.darkText,
+                            color: AppTheme.darkText,
                           ),
                         ),
                       ),
@@ -118,7 +118,7 @@ class Tab1ViewState extends State<Tab1View>
                                 fontFamily: 'OpenSansBold',
                                 fontSize: 15,
                                 letterSpacing: 0.27,
-                                color: DashboardTheme.darkText,
+                                color: AppTheme.darkText,
                               ),
                             ),
                           )),
@@ -134,7 +134,6 @@ class Tab1ViewState extends State<Tab1View>
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 18),
                 child: AnimatedOpacity(
@@ -143,7 +142,6 @@ class Tab1ViewState extends State<Tab1View>
                   child: ReligionGenderBloodListView(),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
                 child: Row(
@@ -158,10 +156,12 @@ class Tab1ViewState extends State<Tab1View>
                           'roby.zulfahri@gmail.com',
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontFamily: 'OpenSansBoldItalic',
+                            fontFamily: AppTheme.fontName,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w600,
                             fontSize: 15,
                             letterSpacing: 0.15,
-                            color: DashboardTheme.darkText,
+                            color: AppTheme.darkText,
                           ),
                         ),
                       ),
@@ -179,7 +179,7 @@ class Tab1ViewState extends State<Tab1View>
                                 fontFamily: 'OpenSansBold',
                                 fontSize: 15,
                                 letterSpacing: 0.27,
-                                color: DashboardTheme.darkText,
+                                color: AppTheme.darkText,
                               ),
                             ),
                           )),
@@ -195,7 +195,6 @@ class Tab1ViewState extends State<Tab1View>
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: AnimatedOpacity(
@@ -204,332 +203,6 @@ class Tab1ViewState extends State<Tab1View>
                   child: BoxListView(),
                 ),
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 18.0),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: <Widget>[
-              //       Expanded(
-              //           child: AnimatedOpacity(
-              //         opacity: opacity3,
-              //         duration: const Duration(milliseconds: 2000),
-              //         child: getBoxUI('Padang', 'Daerah Asal'),
-              //       )),
-              //       Expanded(
-              //           child: AnimatedOpacity(
-              //         opacity: opacity4,
-              //         duration: const Duration(milliseconds: 2000),
-              //         child: getBoxUI('SMA Negeri 1 Padang', 'Sekolah Asal'),
-              //       )),
-              //       Expanded(
-              //           child: AnimatedOpacity(
-              //         opacity: opacity5,
-              //         duration: const Duration(milliseconds: 2000),
-              //         child: getBoxUI('Jakarta, 18 November 2000', 'TTL'),
-              //       )),
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 1.0),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: <Widget>[
-              //       Expanded(
-              //           flex: 1,
-              //           child: AnimatedOpacity(
-              //             opacity: opacity6,
-              //             duration: const Duration(milliseconds: 2000),
-              //             child: Image.asset("assets/images/jk_male.png"),
-              //           )),
-              //       Expanded(
-              //           flex: 1,
-              //           child: AnimatedOpacity(
-              //             opacity: opacity7,
-              //             duration: const Duration(milliseconds: 2000),
-              //             child: Image.asset("assets/images/jk_female.png"),
-              //           )),
-              //       // Expanded(
-              //       //     child: AnimatedOpacity(
-              //       //   opacity: opacity6,
-              //       //   duration: const Duration(milliseconds: 2000),
-              //       //   child: Image.asset("assets/images/logo_or_11_2.png"),
-              //       // )),
-              //     ],
-              //   ),
-              // ),
-
-              // AnimatedOpacity(
-              //   duration: const Duration(milliseconds: 500),
-              //   opacity: opacity1,
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(8),
-              //     child: Row(
-              //       children: <Widget>[
-              //         MealsListView(),
-              //         // getTimeBoxUI('2hours', 'Time'),
-              //         // getTimeBoxUI('24', 'Seat'),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-
-              // Expanded(
-              //   child: AnimatedOpacity(
-              //     duration: const Duration(milliseconds: 500),
-              //     opacity: opacity2,
-              //     child: Padding(
-              //       padding: const EdgeInsets.only(
-              //           left: 16, right: 16, top: 8, bottom: 8),
-              //       child: Text(
-              //         'Lorem ipsum is simply dummy text of printing & typesetting industry, Lorem ipsum is simply dummy text of printing & typesetting industry.',
-              //         textAlign: TextAlign.justify,
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w200,
-              //           fontSize: 14,
-              //           letterSpacing: 0.27,
-              //           color: DashboardTheme.grey,
-              //         ),
-              //         maxLines: 3,
-              //         overflow: TextOverflow.ellipsis,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // AnimatedOpacity(
-              //   duration: const Duration(milliseconds: 500),
-              //   opacity: opacity2,
-              //   child: Padding(
-              //     padding:
-              //         const EdgeInsets.only(left: 16, bottom: 16, right: 16),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       crossAxisAlignment: CrossAxisAlignment.center,
-              //       children: <Widget>[
-              //         Container(
-              //           width: 48,
-              //           height: 48,
-              //           child: Container(
-              //             decoration: BoxDecoration(
-              //               color: DashboardTheme.nearlyWhite,
-              //               borderRadius: const BorderRadius.all(
-              //                 Radius.circular(16.0),
-              //               ),
-              //               border: Border.all(
-              //                   color: DashboardTheme.grey.withOpacity(0.2)),
-              //             ),
-              //             child: Icon(
-              //               Icons.add,
-              //               color: DashboardTheme.nearlyBlue,
-              //               size: 28,
-              //             ),
-              //           ),
-              //         ),
-              //         const SizedBox(
-              //           width: 16,
-              //         ),
-              //         Expanded(
-              //           child: Container(
-              //             height: 48,
-              //             decoration: BoxDecoration(
-              //               color: DashboardTheme.nearlyBlue,
-              //               borderRadius: const BorderRadius.all(
-              //                 Radius.circular(16.0),
-              //               ),
-              //               boxShadow: <BoxShadow>[
-              //                 BoxShadow(
-              //                     color: DashboardTheme.nearlyBlue
-              //                         .withOpacity(0.5),
-              //                     offset: const Offset(1.1, 1.1),
-              //                     blurRadius: 10.0),
-              //               ],
-              //             ),
-              //             child: Center(
-              //               child: Text(
-              //                 'aaaaaa',
-              //                 textAlign: TextAlign.left,
-              //                 style: TextStyle(
-              //                   fontWeight: FontWeight.w600,
-              //                   fontSize: 18,
-              //                   letterSpacing: 0.0,
-              //                   color: DashboardTheme.nearlyWhite,
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: MediaQuery.of(context).padding.bottom,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //       left: 16, right: 16, bottom: 8, top: 16),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-              //       Text(
-              //         '\$28.99',
-              //         textAlign: TextAlign.left,
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w200,
-              //           fontSize: 22,
-              //           letterSpacing: 0.27,
-              //           color: DashboardTheme.nearlyBlue,
-              //         ),
-              //       ),
-              //       Container(
-              //         child: Row(
-              //           children: <Widget>[
-              //             Text(
-              //               '4.3',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(
-              //                 fontWeight: FontWeight.w200,
-              //                 fontSize: 22,
-              //                 letterSpacing: 0.27,
-              //                 color: DashboardTheme.grey,
-              //               ),
-              //             ),
-              //             Icon(
-              //               Icons.star,
-              //               color: DashboardTheme.nearlyBlue,
-              //               size: 24,
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //       left: 16, right: 16, bottom: 8, top: 16),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-              //       Text(
-              //         '\$28.99',
-              //         textAlign: TextAlign.left,
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w200,
-              //           fontSize: 22,
-              //           letterSpacing: 0.27,
-              //           color: DashboardTheme.nearlyBlue,
-              //         ),
-              //       ),
-              //       Container(
-              //         child: Row(
-              //           children: <Widget>[
-              //             Text(
-              //               '4.3',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(
-              //                 fontWeight: FontWeight.w200,
-              //                 fontSize: 22,
-              //                 letterSpacing: 0.27,
-              //                 color: DashboardTheme.grey,
-              //               ),
-              //             ),
-              //             Icon(
-              //               Icons.star,
-              //               color: DashboardTheme.nearlyBlue,
-              //               size: 24,
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //       left: 16, right: 16, bottom: 8, top: 16),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-              //       Text(
-              //         '\$28.99',
-              //         textAlign: TextAlign.left,
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w200,
-              //           fontSize: 22,
-              //           letterSpacing: 0.27,
-              //           color: DashboardTheme.nearlyBlue,
-              //         ),
-              //       ),
-              //       Container(
-              //         child: Row(
-              //           children: <Widget>[
-              //             Text(
-              //               '4.3',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(
-              //                 fontWeight: FontWeight.w200,
-              //                 fontSize: 22,
-              //                 letterSpacing: 0.27,
-              //                 color: DashboardTheme.grey,
-              //               ),
-              //             ),
-              //             Icon(
-              //               Icons.star,
-              //               color: DashboardTheme.nearlyBlue,
-              //               size: 24,
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //       left: 16, right: 16, bottom: 8, top: 16),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-              //       Text(
-              //         '',
-              //         textAlign: TextAlign.left,
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w200,
-              //           fontSize: 22,
-              //           letterSpacing: 0.27,
-              //           color: DashboardTheme.nearlyBlue,
-              //         ),
-              //       ),
-              //       Container(
-              //         child: Row(
-              //           children: <Widget>[
-              //             Text(
-              //               '4.3',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(
-              //                 fontWeight: FontWeight.w200,
-              //                 fontSize: 22,
-              //                 letterSpacing: 0.27,
-              //                 color: DashboardTheme.grey,
-              //               ),
-              //             ),
-              //             Icon(
-              //               Icons.star,
-              //               color: DashboardTheme.nearlyBlue,
-              //               size: 24,
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -555,7 +228,7 @@ class Tab1ViewState extends State<Tab1View>
           ),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: DashboardTheme.dark_grey.withOpacity(0.3),
+                color: AppTheme.dark_grey.withOpacity(0.3),
                 offset: const Offset(0.0, -5.1),
                 blurRadius: 8.0),
           ],
@@ -574,7 +247,7 @@ class Tab1ViewState extends State<Tab1View>
                     fontFamily: 'OpenSansBold',
                     fontSize: 14,
                     letterSpacing: 0.27,
-                    color: DashboardTheme.nearlyWhite),
+                    color: AppTheme.nearlyWhite),
               ),
               Text(
                 text2,
@@ -583,7 +256,7 @@ class Tab1ViewState extends State<Tab1View>
                   fontFamily: 'OpenSansBoldItalic',
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: DashboardTheme.nearlyBlack,
+                  color: AppTheme.nearlyBlack,
                 ),
               ),
             ],
@@ -593,63 +266,6 @@ class Tab1ViewState extends State<Tab1View>
     );
   }
 
-  // Widget getImageUI(Image image1) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: Container(
-  //       decoration: BoxDecoration(
-  //         // gradient: new LinearGradient(
-  //         //   colors: [Color(0xffEB9AD7), Color(0xffBF63A8)],
-  //         //   begin: Alignment.bottomRight,
-  //         //   end: Alignment.topLeft,
-  //         // ),
-  //         borderRadius: BorderRadius.only(
-  //           topLeft: Radius.circular(0),
-  //           topRight: Radius.circular(0),
-  //           bottomLeft: Radius.circular(35),
-  //           bottomRight: Radius.circular(35),
-  //         ),
-  //         boxShadow: <BoxShadow>[
-  //           BoxShadow(
-  //               color: DashboardTheme.dark_grey.withOpacity(0.3),
-  //               offset: const Offset(1.1, 1.1),
-  //               blurRadius: 8.0),
-  //         ],
-  //       ),
-  //       child: Padding(
-  //         padding: const EdgeInsets.only(
-  //             left: 18.0, right: 18.0, top: 12.0, bottom: 12.0),
-  //         child: Column(
-  //           mainAxisAlignment: MainAxisAlignment.center,
-  //           crossAxisAlignment: CrossAxisAlignment.center,
-  //           children: <Widget>[
-  //             Image(
-  //               image1,
-  //               // textAlign: TextAlign.center,
-  //               // style: TextStyle(
-  //               //     fontFamily: 'OpenSansBold',
-  //               //     fontSize: 14,
-  //               //     letterSpacing: 0.27,
-  //               //     color: DashboardTheme.nearlyWhite),
-  //             ),
-  //             // Text(
-  //             //   text2,
-  //             //   textAlign: TextAlign.center,
-  //             //   style: TextStyle(
-  //             //     fontFamily: 'OpenSansBoldItalic',
-  //             //     fontSize: 14,
-  //             //     letterSpacing: 0.27,
-  //             //     color: DashboardTheme.nearlyBlack,
-  //             //   ),
-  //             // ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // TODO: implement wantKeepAlive
   @override
   bool get wantKeepAlive => true;
 }

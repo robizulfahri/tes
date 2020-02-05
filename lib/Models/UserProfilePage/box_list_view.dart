@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
-import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/box_list_data.dart';
-import 'package:neotelemetri_or11/Models/UserProfilePage/religion_gender_blood_list_data.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:neotelemetri_or11/main.dart';
 
 class BoxListView extends StatefulWidget {
@@ -96,33 +94,26 @@ class BoxView extends StatelessWidget {
                       boxListData.titleTxt,
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        fontFamily: DashboardTheme.fontName,
+                        fontFamily: AppTheme.fontName,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         letterSpacing: 0.2,
-                        color: DashboardTheme.white,
+                        color: AppTheme.white,
                       ),
                     ),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 8, bottom: 8),
-                        child:
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.start,
-                            //   crossAxisAlignment: CrossAxisAlignment.start,
-                            //   children: <Widget>[
-                            Text(
+                        child: Text(
                           boxListData.detailTxt,
                           style: TextStyle(
-                            fontFamily: DashboardTheme.fontName,
+                            fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.w500,
                             fontSize: 10,
                             letterSpacing: 0.2,
-                            color: DashboardTheme.white,
+                            color: AppTheme.white,
                           ),
                         ),
-                        //   ],
-                        // ),
                       ),
                     ),
                   ],
@@ -137,20 +128,11 @@ class BoxView extends StatelessWidget {
               width: 84,
               height: 84,
               decoration: BoxDecoration(
-                color: DashboardTheme.nearlyWhite.withOpacity(0.2),
+                color: AppTheme.nearlyWhite.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
             ),
           ),
-          // Positioned(
-          //   top: 0,
-          //   left: 8,
-          //   child: SizedBox(
-          //     width: 80,
-          //     height: 80,
-          //     child: Image.asset(boxListData.imagePath),
-          //   ),
-          // )
         ],
       ),
     );

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Screen/Dashboard.dart';
-import 'package:neotelemetri_or11/Tabs/UserProfilePage%20copy.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage>
             children: <Widget>[
               Card(
                 elevation: 2.0,
-                color: Color(0xffF1A2DE),
+                color: AppTheme.nearlyWhite,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -245,18 +245,18 @@ class _LoginPageState extends State<LoginPage>
                             style: TextStyle(
                                 fontFamily: "OpenSansSemiBold",
                                 fontSize: 19.0,
-                                color: Colors.white),
+                                color: AppTheme.darkerText),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
                                 FontAwesomeIcons.envelope,
-                                color: Colors.white,
+                                color: AppTheme.darkerText,
                                 size: 25.0,
                               ),
                               hintText: "Email Address",
                               hintStyle: TextStyle(
                                   fontFamily: "OpenSansSemiBold",
-                                  color: Colors.white70,
+                                  color: AppTheme.grey,
                                   fontSize: 20.0),
                             ),
                           ),
@@ -277,28 +277,27 @@ class _LoginPageState extends State<LoginPage>
                             style: TextStyle(
                                 fontFamily: "OpenSansSemiBold",
                                 fontSize: 19.0,
-                                color: Colors.white),
+                                color: AppTheme.darkerText),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
                                 FontAwesomeIcons.lock,
                                 size: 25.0,
-                                color: Colors.white,
+                                color: AppTheme.darkerText,
                               ),
                               hintText: "Password",
                               hintStyle: TextStyle(
                                   fontFamily: "OpenSansSemiBold",
                                   fontSize: 20.0,
-                                  color: Colors.white70),
+                                  color: AppTheme.grey),
                               suffixIcon: GestureDetector(
                                 onTap: _toggleLogin,
                                 child: Icon(
-                                  _obscureTextLogin
-                                      ? FontAwesomeIcons.eye
-                                      : FontAwesomeIcons.eyeSlash,
-                                  size: 18.0,
-                                  color: Colors.white,
-                                ),
+                                    _obscureTextLogin
+                                        ? FontAwesomeIcons.eye
+                                        : FontAwesomeIcons.eyeSlash,
+                                    size: 18.0,
+                                    color: AppTheme.darkerText),
                               ),
                             ),
                           ),

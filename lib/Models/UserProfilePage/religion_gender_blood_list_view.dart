@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neotelemetri_or11/Models/Dashboard/dashboard_theme.dart';
-import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/religion_gender_blood_list_data.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:neotelemetri_or11/main.dart';
 
 class ReligionGenderBloodListView extends StatefulWidget {
@@ -100,11 +99,11 @@ class ReligionGenderBloodView extends StatelessWidget {
                       religionGenderBloodListData.titleTxt,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: DashboardTheme.fontName,
+                        fontFamily: AppTheme.fontName,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         letterSpacing: 0.2,
-                        color: DashboardTheme.white,
+                        color: AppTheme.white,
                       ),
                     ),
                   ],
@@ -119,7 +118,7 @@ class ReligionGenderBloodView extends StatelessWidget {
               width: 84,
               height: 84,
               decoration: BoxDecoration(
-                color: DashboardTheme.nearlyWhite.withOpacity(0.2),
+                color: AppTheme.nearlyWhite.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
             ),
