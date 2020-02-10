@@ -3,6 +3,7 @@ import 'package:neotelemetri_or11/Constant/Constant.dart';
 import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/avatar_glow.dart';
 import 'package:neotelemetri_or11/Models/UserProfilePage/tab_view.dart';
+import 'package:neotelemetri_or11/Screen/Dashboard.dart';
 import 'package:neotelemetri_or11/Screen/LoginPage.dart';
 import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -18,35 +19,26 @@ class UserProfilePage extends StatefulWidget {
   _UserProfilePageState createState() => _UserProfilePageState();
 }
 
+enum LoginStatus { notSignIn, signIn }
+
 class _UserProfilePageState extends State<UserProfilePage>
     with TickerProviderStateMixin {
+  var value;
   LoginStatus _loginStatus = LoginStatus.notSignIn;
 
   signOut() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      preferences.setInt("value", null);
+      value = preferences.setInt("value", 0);
       preferences.commit();
       _loginStatus = LoginStatus.notSignIn;
     });
-    if (value == 0) {
-      Navigator.of(context).pushReplacementNamed(LOGIN_SCREEN);
-    }
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+      (Route<dynamic> route) => false,
+    );
   }
-
-  getPref() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      value = preferences.getInt("value");
-      _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
-    });
-    if (_loginStatus == LoginStatus.notSignIn) {
-      Navigator.of(context).pushReplacementNamed(LOGIN_SCREEN);
-    }
-    ;
-  }
-
-  var value;
 
   Animation<double> topBarAnimation;
 

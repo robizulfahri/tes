@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:neotelemetri_or11/Models/LoginPage/login_theme.dart' as Theme;
 import 'package:neotelemetri_or11/Models/UserProfilePage/box_list_view.dart';
 import 'package:neotelemetri_or11/Models/UserProfilePage/religion_gender_blood_list_view.dart';
 import 'package:neotelemetri_or11/appTheme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Tab1View extends StatefulWidget {
   @override
@@ -11,6 +15,17 @@ class Tab1View extends StatefulWidget {
 
 class Tab1ViewState extends State<Tab1View>
     with TickerProviderStateMixin<Tab1View> {
+  // checkProfile() async {
+  //   var urlLogin = 'https://or.neotelemetri.com/view/mobile_login.php';
+  //   final response =
+  //       await http.post(urlLogin, body: {"email": email, "password": password});
+  //   final data = jsonDecode(response.body);
+  //   int value = data['value'];
+  //   String message = data['message'];
+  //   String emailAPI = data['email'];
+  //   String nameAPI = data['name'];
+  // }
+
   final double infoHeight = 164.0;
   AnimationController animationController;
   Animation<double> animation, delayedAnimation1;
@@ -23,6 +38,7 @@ class Tab1ViewState extends State<Tab1View>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
+    getPref();
     setData();
     super.initState();
   }
@@ -47,6 +63,17 @@ class Tab1ViewState extends State<Tab1View>
     });
   }
 
+  String name = "", email = "", alamat = "";
+
+  getPref() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      name = preferences.getString("name");
+      email = preferences.getString("email");
+      alamat = preferences.getString("alamat");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
@@ -60,17 +87,7 @@ class Tab1ViewState extends State<Tab1View>
             bottomLeft: Radius.circular(35),
             bottomRight: Radius.circular(35),
           ),
-          color: AppTheme.nearlyWhite
-          // gradient: new LinearGradient(
-          //     colors: [
-          //       Theme.Colorss.loginGradientEnd,
-          //       Theme.Colorss.loginGradientStart
-          //     ],
-          //     begin: const FractionalOffset(0.2, 0.2),
-          //     end: const FractionalOffset(1.0, 1.0),
-          //     stops: [0.0, 1.0],
-          //     tileMode: TileMode.clamp),
-          ),
+          color: AppTheme.nearlyWhite),
       padding: new EdgeInsets.only(bottom: 10.0, top: 20),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -93,7 +110,8 @@ class Tab1ViewState extends State<Tab1View>
                         opacity: opacity1,
                         duration: const Duration(milliseconds: 500),
                         child: Text(
-                          'Budi Agung Santoso',
+                          // 'Budi Agung Santoso',
+                          '$name',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontWeight: FontWeight.w900,

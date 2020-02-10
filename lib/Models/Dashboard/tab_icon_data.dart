@@ -27,20 +27,13 @@ class TabIconData {
     TabIconData(
       imagePath: 'assets/images/tab_2.png',
       selectedImagePath: 'assets/images/tab_2s.png',
-      index: 1,
+      index: 2,
       isSelected: false,
       animationController: null,
     ),
     TabIconData(
       imagePath: 'assets/images/tab_3.png',
       selectedImagePath: 'assets/images/tab_3s.png',
-      index: 2,
-      isSelected: false,
-      animationController: null,
-    ),
-    TabIconData(
-      imagePath: 'assets/images/tab_4.png',
-      selectedImagePath: 'assets/images/tab_4s.png',
       index: 3,
       isSelected: false,
       animationController: null,

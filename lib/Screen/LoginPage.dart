@@ -34,9 +34,6 @@ class _LoginPageState extends State<LoginPage>
   TextEditingController loginEmailController = new TextEditingController();
   TextEditingController loginPasswordController = new TextEditingController();
 
-  Color left = Colors.black;
-  Color right = Colors.white;
-
   bool _obscureTextLogin = true;
 
   void _toggleLogin() {

@@ -4,11 +4,14 @@ import 'package:neotelemetri_or11/Models/Dashboard/tab_icon_data.dart';
 import 'package:neotelemetri_or11/Tabs/ComingSoonPage.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
 import 'package:neotelemetri_or11/appTheme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
 }
+
+enum LoginStatus { notSignIn, signIn }
 
 class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   AnimationController animationController;
@@ -36,6 +39,18 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   void dispose() {
     animationController.dispose();
     super.dispose();
+  }
+
+  var value;
+
+  LoginStatus _loginStatus = LoginStatus.notSignIn;
+
+  getPref() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      value = preferences.getInt("value");
+      _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
+    });
   }
 
   @override
@@ -99,16 +114,6 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                 });
               });
             } else if (index == 2) {
-              animationController.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      ComingSoonPage(animationController: animationController);
-                });
-              });
-            } else if (index == 3) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
