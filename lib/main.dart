@@ -7,7 +7,6 @@ import 'package:neotelemetri_or11/Screen/AnimatedSplashScreen.dart';
 import 'package:neotelemetri_or11/Screen/ParalaxIntroSlider.dart';
 import 'package:neotelemetri_or11/Screen/LoginPage.dart';
 import 'package:neotelemetri_or11/Tabs/UserProfilePage.dart';
-import 'AppTheme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +36,6 @@ class _MyAppState extends State<MyApp> {
       title: 'OR Neo Telemetri',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
       home: AnimatedSplashScreen(),

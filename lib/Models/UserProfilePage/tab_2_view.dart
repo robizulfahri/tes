@@ -179,7 +179,7 @@ class Tab2ViewState extends State<Tab2View>
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontName,
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w700,
                                           fontSize: 16,
                                           letterSpacing: 0.2,
                                           color: AppTheme.white,
@@ -228,8 +228,9 @@ class Tab2ViewState extends State<Tab2View>
                               '1810911033',
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontFamily: 'OpenSansBold',
-                                fontSize: 15,
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
                                 letterSpacing: 0.5,
                                 color: AppTheme.darkText,
                               ),
@@ -241,8 +242,9 @@ class Tab2ViewState extends State<Tab2View>
                               'Hubungan Internasional',
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontFamily: 'OpenSansBold',
-                                fontSize: 15,
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
                                 letterSpacing: 0.15,
                                 color: Color(0xff8051A0),
                               ),
@@ -254,8 +256,9 @@ class Tab2ViewState extends State<Tab2View>
                               'Matematika dan Ilmu Pengetahuan Alam',
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontFamily: 'OpenSansBold',
-                                fontSize: 15,
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
                                 letterSpacing: 0.15,
                                 color: AppTheme.darkText,
                               ),
@@ -275,10 +278,10 @@ class Tab2ViewState extends State<Tab2View>
                       left: 26, right: 26, top: 18, bottom: 5),
                   child: Text(
                     'Hobi',
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontFamily: 'OpenSansBold',
-                      fontSize: 23,
+                      fontFamily: AppTheme.fontName,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
                       letterSpacing: 0.5,
                       color: AppTheme.darkerText,
                     ),
@@ -295,10 +298,11 @@ class Tab2ViewState extends State<Tab2View>
                     children: <Widget>[
                       Text(
                         'Travelling, futsal, bulutangkis, programing, menonton, domino.',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'OpenSansSemiBold',
-                          fontSize: 14,
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                           letterSpacing: 0.27,
                           color: AppTheme.grey,
                         ),
@@ -315,10 +319,10 @@ class Tab2ViewState extends State<Tab2View>
                       left: 26, right: 26, top: 18, bottom: 5),
                   child: Text(
                     'Cita-Cita',
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontFamily: 'OpenSansBold',
-                      fontSize: 23,
+                      fontFamily: AppTheme.fontName,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
                       letterSpacing: 0.5,
                       color: AppTheme.darkerText,
                     ),
@@ -335,10 +339,11 @@ class Tab2ViewState extends State<Tab2View>
                     children: <Widget>[
                       Text(
                         'Pengusaha sukses, menjadi orang yg berguna.',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'OpenSansSemiBold',
-                          fontSize: 14,
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                           letterSpacing: 0.27,
                           color: AppTheme.grey,
                         ),
@@ -355,10 +360,10 @@ class Tab2ViewState extends State<Tab2View>
                       left: 26, right: 26, top: 18, bottom: 5),
                   child: Text(
                     'Keahlian',
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontFamily: 'OpenSansBold',
-                      fontSize: 23,
+                      fontFamily: AppTheme.fontName,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
                       letterSpacing: 0.5,
                       color: AppTheme.darkerText,
                     ),
@@ -375,10 +380,11 @@ class Tab2ViewState extends State<Tab2View>
                     children: <Widget>[
                       Text(
                         'Ngoding.',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'OpenSansSemiBold',
-                          fontSize: 14,
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                           letterSpacing: 0.27,
                           color: AppTheme.grey,
                         ),
@@ -395,10 +401,10 @@ class Tab2ViewState extends State<Tab2View>
                       left: 26, right: 26, top: 18, bottom: 5),
                   child: Text(
                     'Prestasi',
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontFamily: 'OpenSansBold',
-                      fontSize: 23,
+                      fontFamily: AppTheme.fontName,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
                       letterSpacing: 0.5,
                       color: AppTheme.darkerText,
                     ),
@@ -415,10 +421,11 @@ class Tab2ViewState extends State<Tab2View>
                     children: <Widget>[
                       Text(
                         'Juara 1 OSN tingkat kabupaten bidang Asronomi\nJuara 1 OSN tingkat sekolah bidang Astronomi\nSemifinalis Lomba Fisika (LF) Physics Festival Se-Indonesia\nSemifinalis Lomba Fisika  (LOFI) Se-Sumatera',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'OpenSansSemiBold',
-                          fontSize: 14,
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                           letterSpacing: 0.27,
                           color: AppTheme.grey,
                         ),
@@ -435,10 +442,10 @@ class Tab2ViewState extends State<Tab2View>
                       left: 26, right: 26, top: 18, bottom: 5),
                   child: Text(
                     'Riwayat Penyakit',
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontFamily: 'OpenSansBold',
-                      fontSize: 23,
+                      fontFamily: AppTheme.fontName,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
                       letterSpacing: 0.5,
                       color: AppTheme.darkerText,
                     ),
@@ -455,72 +462,17 @@ class Tab2ViewState extends State<Tab2View>
                     children: <Widget>[
                       Text(
                         'Infeksi saluran pencernaan.',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'OpenSansSemiBold',
-                          fontSize: 14,
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                           letterSpacing: 0.27,
-                          color: AppTheme.grey,
+                          color: AppTheme.darkerText,
                         ),
                       ),
                     ],
                   ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget getBoxUI(String text1, String text2) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: new LinearGradient(
-            colors: [Color(0xffEB9AD7), Color(0xffBF63A8)],
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft,
-          ),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(0),
-            topRight: Radius.circular(0),
-            bottomLeft: Radius.circular(35),
-            bottomRight: Radius.circular(35),
-          ),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: AppTheme.dark_grey.withOpacity(0.3),
-                offset: const Offset(0.0, -5.1),
-                blurRadius: 8.0),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-              left: 18.0, right: 18.0, top: 12.0, bottom: 12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                text1,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'OpenSansBold',
-                    fontSize: 14,
-                    letterSpacing: 0.27,
-                    color: AppTheme.nearlyWhite),
-              ),
-              Text(
-                text2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'OpenSansBoldItalic',
-                  fontSize: 14,
-                  letterSpacing: 0.27,
-                  color: AppTheme.nearlyBlack,
                 ),
               ),
             ],

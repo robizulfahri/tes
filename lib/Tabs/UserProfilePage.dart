@@ -323,7 +323,10 @@ class _UserProfilePageState extends State<UserProfilePage>
     animationType: AnimationType.fromTop,
     isCloseButton: false,
     isOverlayTapDismiss: false,
-    descStyle: TextStyle(fontFamily: AppTheme.fontName),
+    descStyle: TextStyle(
+        fontFamily: AppTheme.fontName,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.27),
     animationDuration: Duration(milliseconds: 400),
     alertBorder: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
@@ -333,6 +336,9 @@ class _UserProfilePageState extends State<UserProfilePage>
     ),
     titleStyle: TextStyle(
       fontFamily: AppTheme.fontName,
+      fontWeight: FontWeight.w700,
+      fontSize: 19,
+      letterSpacing: 0.4,
       color: Colors.red,
     ),
   );

@@ -8,22 +8,127 @@ import 'package:neotelemetri_or11/Models/UserProfilePage/religion_gender_blood_l
 import 'package:neotelemetri_or11/appTheme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Future<ProfileModel> fetchPost() async {
+//   SharedPreferences preferences = await SharedPreferences.getInstance();
+//   var urlProfile =
+//       'https://or.neotelemetri.com/view/mobile_profile.php?email=' +
+//           preferences.getString("email");
+//   final response = await http.get(urlProfile);
+//   print(urlProfile);
+
+//   if (response.statusCode == 200) {
+//     return ProfileModel.fromJson(json.decode(response.body));
+//   } else {
+//     throw Exception('Failed to load post');
+//   }
+// }
+
+// class ProfileModel {
+//   final int value;
+//   final String email;
+//   final String name;
+//   final String alamat;
+//   final String nama_divisi;
+//   final String nama_sub_divisi;
+//   final String name_faculty;
+//   final String name_jurusan;
+
+//   ProfileModel(
+//       {this.value,
+//       this.email,
+//       this.name,
+//       this.alamat,
+//       this.nama_divisi,
+//       this.nama_sub_divisi,
+//       this.name_faculty,
+//       this.name_jurusan});
+
+//   factory ProfileModel.fromJson(Map<String, dynamic> json) {
+//     return ProfileModel(
+//       value: json['value'],
+//       email: json['email'],
+//       name: json['name'],
+//       alamat: json['alamat'],
+//       nama_divisi: json['nama_divisi'],
+//       nama_sub_divisi: json['nama_sub_divisi'],
+//       name_faculty: json['name_faculty'],
+//       name_jurusan: json['name_jurusan'],
+//     );
+//   }
+// }
+
 class Tab1View extends StatefulWidget {
   @override
   State createState() => new Tab1ViewState();
 }
 
 class Tab1ViewState extends State<Tab1View>
-    with TickerProviderStateMixin<Tab1View> {
+    with AutomaticKeepAliveClientMixin<Tab1View> {
+  // Future<ProfileModel> profileModel;
+  // var loading = false;
+
+  final GlobalKey<RefreshIndicatorState> _refresh =
+      GlobalKey<RefreshIndicatorState>();
+
+  Future<void> _lihatProfile() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var urlProfile =
+        'https://or.neotelemetri.com/view/mobile_profile.php?email=' +
+            preferences.getString("email");
+    final response = await http.get(urlProfile);
+    print(urlProfile);
+    final data = jsonDecode(response.body);
+    int value = data['value'];
+    String emailAPI = data['email'];
+    String nameAPI = data['name'];
+    String alamatAPI = data['alamat'];
+    String nama_divisiAPI = data['nama_divisi'];
+    String nama_sub_divisiAPI = data['nama_sub_divisi'];
+    String name_facultyAPI = data['name_faculty'];
+    String name_jurusanAPI = data['name_jurusan'];
+    if (value == 1) {
+      // setState(() {
+      //   savePref(value, emailAPI, nameAPI);
+      // });
+      print(emailAPI);
+      print(nameAPI);
+      print(alamatAPI);
+      print(nama_divisiAPI);
+      print(nama_sub_divisiAPI);
+      print(name_facultyAPI);
+      print(name_jurusanAPI);
+    } else {
+      print("gagal");
+    }
+  }
+
+  // savePref(int value, String emailAPI, String nameAPI) async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     preferences.setInt("value", value);
+  //     preferences.setString("emailAPI", emailAPI);
+  //     preferences.setString("nameAPI", nameAPI);
+  //     preferences.commit();
+  //   });
+  // }
+
+  // getPref1() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     emailAPI = preferences.getString("emailAPI");
+  //     nameAPI = preferences.getString("nameAPI");
+  //     // print(email);
+  //   });
+  // }
+
   // checkProfile() async {
-  //   var urlLogin = 'https://or.neotelemetri.com/view/mobile_login.php';
-  //   final response =
-  //       await http.post(urlLogin, body: {"email": email, "password": password});
+  //   var urlProfile =
+  //       'https://or.neotelemetri.com/view/mobile_profile.php?email=' + '$email';
+  //   final response = await http.get(urlProfile);
   //   final data = jsonDecode(response.body);
   //   int value = data['value'];
   //   String message = data['message'];
   //   String emailAPI = data['email'];
-  //   String nameAPI = data['name'];
   // }
 
   final double infoHeight = 164.0;
@@ -38,9 +143,9 @@ class Tab1ViewState extends State<Tab1View>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
-    getPref();
     setData();
     super.initState();
+    _lihatProfile();
   }
 
   Future<void> setData() async {
@@ -63,22 +168,25 @@ class Tab1ViewState extends State<Tab1View>
     });
   }
 
-  String name = "", email = "", alamat = "";
+  String nameAPI = "AA", emailAPI = "", alamatAPI = "";
 
-  getPref() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      name = preferences.getString("name");
-      email = preferences.getString("email");
-      alamat = preferences.getString("alamat");
-    });
-  }
+  // getPref() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     email = preferences.getString("email");
+  //     nameAPI = preferences.getString("nameAPI");
+  //     // print(email);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
         280.0;
+
+    // super.build(context);
+
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -105,23 +213,33 @@ class Tab1ViewState extends State<Tab1View>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Expanded(
-                      child: AnimatedOpacity(
-                        opacity: opacity1,
-                        duration: const Duration(milliseconds: 500),
-                        child: Text(
-                          // 'Budi Agung Santoso',
-                          '$name',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontFamily: 'OpenSansBold',
-                            fontSize: 32,
-                            letterSpacing: 0.25,
-                            color: AppTheme.darkText,
-                          ),
-                        ),
+                    Text(
+                      // 'Budi Agung Santoso',
+                      '$nameAPI',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: AppTheme.fontName,
+                        fontSize: 32,
+                        letterSpacing: 0.25,
+                        color: AppTheme.darkText,
                       ),
+                      // child: AnimatedOpacity(
+                      //   opacity: opacity1,
+                      //   duration: const Duration(milliseconds: 500),
+                      //   child: Text(
+                      //     // 'Budi Agung Santoso',
+                      //     '$nameAPI',
+                      //     textAlign: TextAlign.left,
+                      //     style: TextStyle(
+                      //       fontWeight: FontWeight.w900,
+                      //       fontFamily: AppTheme.fontName,
+                      //       fontSize: 32,
+                      //       letterSpacing: 0.25,
+                      //       color: AppTheme.darkText,
+                      //     ),
+                      //   ),
+                      // ),
                     ),
                     Expanded(
                       child: AnimatedOpacity(
@@ -133,7 +251,8 @@ class Tab1ViewState extends State<Tab1View>
                               'Jalan Universitas Andalas, Limau Manis, Kec. Pauh, Kota Padang',
                               textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontFamily: 'OpenSansBold',
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w700,
                                 fontSize: 15,
                                 letterSpacing: 0.27,
                                 color: AppTheme.darkText,
@@ -262,7 +381,8 @@ class Tab1ViewState extends State<Tab1View>
                 text1,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: 'OpenSansBold',
+                    fontFamily: AppTheme.fontName,
+                    fontWeight: FontWeight.w700,
                     fontSize: 14,
                     letterSpacing: 0.27,
                     color: AppTheme.nearlyWhite),

@@ -51,10 +51,17 @@ class _LoginPageState extends State<LoginPage>
   }
 
   var alertStyle = AlertStyle(
+    backgroundColor: AppTheme.background,
     animationType: AnimationType.fromTop,
     isCloseButton: false,
     isOverlayTapDismiss: false,
-    descStyle: TextStyle(fontFamily: "OpenSansBold"),
+    descStyle: TextStyle(
+      fontFamily: AppTheme.fontName,
+      color: AppTheme.darkerText,
+      fontWeight: FontWeight.w400,
+      fontSize: 16,
+      letterSpacing: 0.17,
+    ),
     animationDuration: Duration(milliseconds: 400),
     alertBorder: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
@@ -63,9 +70,11 @@ class _LoginPageState extends State<LoginPage>
       ),
     ),
     titleStyle: TextStyle(
-      fontFamily: "OpenSansBold",
-      color: Colors.red,
-    ),
+        fontFamily: AppTheme.fontName,
+        fontWeight: FontWeight.w700,
+        color: Colors.red,
+        fontSize: 19,
+        letterSpacing: 0.9),
   );
 
   _login() async {
@@ -98,9 +107,10 @@ class _LoginPageState extends State<LoginPage>
             child: Text(
               "OK",
               style: TextStyle(
-                  color: Colors.white,
+                  color: AppTheme.nearlyWhite,
                   fontSize: 25.0,
-                  fontFamily: "OpenSansBold"),
+                  fontFamily: AppTheme.fontName,
+                  fontWeight: FontWeight.w700),
             ),
             onPressed: () => Navigator.pop(context),
             gradient: LinearGradient(colors: [
@@ -240,7 +250,8 @@ class _LoginPageState extends State<LoginPage>
                             controller: loginEmailController,
                             keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
-                                fontFamily: "OpenSansSemiBold",
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 19.0,
                                 color: AppTheme.darkerText),
                             decoration: InputDecoration(
@@ -252,8 +263,9 @@ class _LoginPageState extends State<LoginPage>
                               ),
                               hintText: "Email Address",
                               hintStyle: TextStyle(
-                                  fontFamily: "OpenSansSemiBold",
-                                  color: AppTheme.grey,
+                                  fontFamily: AppTheme.fontName,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppTheme.deactivatedText,
                                   fontSize: 20.0),
                             ),
                           ),
@@ -272,21 +284,23 @@ class _LoginPageState extends State<LoginPage>
                             controller: loginPasswordController,
                             obscureText: _obscureTextLogin,
                             style: TextStyle(
-                                fontFamily: "OpenSansSemiBold",
+                                fontFamily: AppTheme.fontName,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 19.0,
                                 color: AppTheme.darkerText),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
-                                FontAwesomeIcons.lock,
+                                FontAwesomeIcons.key,
                                 size: 25.0,
                                 color: AppTheme.darkerText,
                               ),
                               hintText: "Password",
                               hintStyle: TextStyle(
-                                  fontFamily: "OpenSansSemiBold",
+                                  fontFamily: AppTheme.fontName,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 20.0,
-                                  color: AppTheme.grey),
+                                  color: AppTheme.deactivatedText),
                               suffixIcon: GestureDetector(
                                 onTap: _toggleLogin,
                                 child: Icon(

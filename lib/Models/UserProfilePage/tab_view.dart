@@ -57,78 +57,79 @@ class _TabViewState extends State<TabView> with TickerProviderStateMixin {
             transform: new Matrix4.translationValues(
                 0.0, 30 * (1.0 - animation.value), 0.0),
             child: Container(
-                padding: const EdgeInsets.only(
-                  top: 2,
-                ),
-                decoration: BoxDecoration(
-                  gradient: new LinearGradient(colors: [
-                    Theme.Colorss.loginGradientEnd,
-                    Theme.Colorss.loginGradientStart
-                  ], begin: Alignment.topLeft, end: Alignment.topRight),
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(35.0),
-                      topRight: Radius.circular(35.0),
-                      bottomLeft: Radius.circular(35.0),
-                      bottomRight: Radius.circular(35.0)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.5),
-                        offset: const Offset(1.1, 1.1),
-                        blurRadius: 10.0),
-                  ],
-                ),
-                constraints: BoxConstraints(
-                    minHeight: infoHeight,
-                    maxHeight:
-                        tempHeight > infoHeight ? tempHeight : infoHeight),
-                child: DefaultTabController(
-                  child: Scaffold(
-                    primary: false,
-                    backgroundColor: Colors.transparent,
-                    appBar: PreferredSize(
-                      child: TabBar(
-                          indicatorColor: Colors.transparent,
-                          labelStyle: TextStyle(fontSize: 40),
-                          unselectedLabelStyle: TextStyle(fontSize: 20),
-                          labelColor: AppTheme.dark_grey,
-                          unselectedLabelColor: AppTheme.nearlyWhite,
-                          indicatorSize: TabBarIndicatorSize.tab,
-                          indicator: BoxDecoration(
-                            color: Colors.transparent,
+              padding: const EdgeInsets.only(
+                top: 2,
+              ),
+              decoration: BoxDecoration(
+                gradient: new LinearGradient(colors: [
+                  Theme.Colorss.loginGradientEnd,
+                  Theme.Colorss.loginGradientStart
+                ], begin: Alignment.topLeft, end: Alignment.topRight),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(35.0),
+                    topRight: Radius.circular(35.0),
+                    bottomLeft: Radius.circular(35.0),
+                    bottomRight: Radius.circular(35.0)),
+                boxShadow: [
+                  BoxShadow(
+                      color: AppTheme.grey.withOpacity(0.5),
+                      offset: const Offset(1.1, 1.1),
+                      blurRadius: 10.0),
+                ],
+              ),
+              constraints: BoxConstraints(
+                  minHeight: infoHeight,
+                  maxHeight: tempHeight > infoHeight ? tempHeight : infoHeight),
+              child: DefaultTabController(
+                child: Scaffold(
+                  primary: false,
+                  backgroundColor: Colors.transparent,
+                  appBar: PreferredSize(
+                    child: TabBar(
+                        indicatorColor: Colors.transparent,
+                        labelStyle: TextStyle(fontSize: 40),
+                        unselectedLabelStyle: TextStyle(fontSize: 20),
+                        labelColor: AppTheme.dark_grey,
+                        unselectedLabelColor: AppTheme.nearlyWhite,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicator: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        tabs: [
+                          Tab(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "...",
+                                style: TextStyle(
+                                  fontFamily: "OpenSansBold",
+                                ),
+                              ),
+                            ),
                           ),
-                          tabs: [
-                            Tab(
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "...",
-                                  style: TextStyle(
-                                    fontFamily: "OpenSansBold",
-                                  ),
+                          Tab(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "...",
+                                style: TextStyle(
+                                  fontFamily: "OpenSansBold",
                                 ),
                               ),
                             ),
-                            Tab(
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "...",
-                                  style: TextStyle(
-                                    fontFamily: "OpenSansBold",
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]),
-                      preferredSize: Size.fromHeight(47.0),
-                    ),
+                          ),
+                        ]),
+                    preferredSize: Size.fromHeight(47.0),
+                  ),
                     body: TabBarView(children: <Widget>[
                       new Tab1View(),
                       new Tab2View(),
-                    ]),
+                    ],
                   ),
-                  length: 2,
-                )),
+                ),
+                length: 2,
+              ),
+            ),
           ),
         );
       },

@@ -1056,7 +1056,7 @@ class IntroSliderState extends State<IntroSlider>
               ),
               margin: marginTitle ??
                   EdgeInsets.only(
-                      top: 60.0, bottom: 50.0, left: 20.0, right: 20.0),
+                      top: 60.0, bottom: 10.0, left: 20.0, right: 20.0),
             ),
 
             // Description
@@ -1072,7 +1072,7 @@ class IntroSliderState extends State<IntroSlider>
                 overflow: TextOverflow.ellipsis,
               ),
               margin: marginDescription ??
-                  EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 50.0),
+                  EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 50.0),
             ),
           ],
         ),

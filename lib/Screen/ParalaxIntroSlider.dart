@@ -3,6 +3,7 @@ import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/dot_animation_enum.d
 import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/intro_slider.dart';
 import 'package:neotelemetri_or11/Models/ParalaxIntroSlider/slide_object.dart';
 import 'package:neotelemetri_or11/Constant/Constant.dart';
+import 'package:neotelemetri_or11/appTheme.dart';
 
 class ParalaxIntroSlider extends StatefulWidget {
   @override
@@ -20,18 +21,36 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
       new Slide(
         title: "PROGRAMMING",
         styleTitle: TextStyle(
-            color: Colors.black, fontSize: 25.0, fontFamily: 'OpenSansBold'),
+            color: AppTheme.darkerText,
+            fontSize: 25.0,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w700),
         pathImage: "assets/images/logo_divisi_prog.png",
         backgroundImage: 'assets/images/intro_1.png',
+        description: "Web Programming\nMobile Programming\nDesktop Programming",
+        styleDescription: TextStyle(
+            color: AppTheme.darkText,
+            fontSize: 20,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w300),
       ),
     );
     slides.add(
       new Slide(
         title: "MULTIMEDIA & DESAIN",
         styleTitle: TextStyle(
-            color: Colors.black, fontSize: 25.0, fontFamily: 'OpenSansBold'),
+            color: AppTheme.darkerText,
+            fontSize: 25.0,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w700),
         pathImage: "assets/images/logo_divisi_mmd.png",
         backgroundImage: 'assets/images/intro_2.png',
+        description: "3D\nVideo Editing\nMultimedia Interaktif",
+        styleDescription: TextStyle(
+            color: AppTheme.darkText,
+            fontSize: 20,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w300),
       ),
     );
     slides.add(
@@ -39,9 +58,18 @@ class IntroSliderState extends State<ParalaxIntroSlider> {
         title: "SISTEM KOMPUTER & JARINGAN",
         maxLineTitle: 2,
         styleTitle: TextStyle(
-            color: Colors.black, fontSize: 25.0, fontFamily: 'OpenSansBold'),
+            color: AppTheme.darkerText,
+            fontSize: 25.0,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w700),
         pathImage: "assets/images/logo_divisi_skj.png",
         backgroundImage: 'assets/images/intro_3.png',
+        description: "System Engineering\nNetwork Engineering",
+        styleDescription: TextStyle(
+            color: AppTheme.darkText,
+            fontSize: 20,
+            fontFamily: AppTheme.fontName,
+            fontWeight: FontWeight.w300),
       ),
     );
   }
